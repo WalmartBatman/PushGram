@@ -3,13 +3,17 @@ plugins {
 }
 
 android {
+    namespace "com.pushgram.app"
     compileSdk 34
 
     defaultConfig {
         applicationId "com.pushgram.app"
         minSdk 28  // Android 9 = API 28
+	
         targetSdk 34
+	
         versionCode 1
+	
         versionName "1.0"
     }
 
