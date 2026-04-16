@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PushGram">
+
+        <!-- Core screens -->
+        <activity android:name=".ui.MainActivity" android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.WorkoutActivity" android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".ui.BlockerActivity" android:exported="false"
+            android:excludeFromRecents="true" android:taskAffinity=""
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme.PushGram.Blocker" />
+
+        <!-- Music -->
+        <activity android:name=".music.ui.MusicActivity" android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity android:name=".music.ui.PlaylistDetailActivity" android:exported="false"
+            android:screenOrientation="portrait" />
+        <service android:name=".music.service.MusicService" android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
+
+        <!-- Exercises + Progression -->
+        <activity android:name=".progression.ui.ExercisesActivity" android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity android:name=".progression.ui.ExerciseDetailActivity" android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Leaderboard -->
+        <activity android:name=".rank.ui.LeaderboardActivity" android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Battle -->
+        <activity android:name=".battle.ui.BattleLobbyActivity" android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity android:name=".battle.ui.BattleActivity" android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Instagram monitor service -->
+        <service android:name=".service.InstagramMonitorService" android:exported="true"
+            android:label="@string/accessibility_service_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+        <receiver android:name=".service.BootReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>

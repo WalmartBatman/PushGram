@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <!-- Camera preview background -->
+    <androidx.camera.view.PreviewView
+        android:id="@+id/cameraPreview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:scaleType="fillCenter"/>
+
+    <!-- Dark overlay -->
+    <View android:layout_width="match_parent" android:layout_height="match_parent"
+        android:background="#99000000"/>
+
+    <!-- Top bar -->
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:orientation="horizontal"
+        android:background="#CC000000"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <Button android:id="@+id/btnBack"
+            android:layout_width="40dp" android:layout_height="40dp"
+            android:text="✕" android:textSize="16sp"
+            android:backgroundTint="@android:color/transparent"
+            android:textColor="@color/white" android:padding="0dp"/>
+
+        <TextView android:id="@+id/tvRoomCode"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Room: ABC123" android:textSize="14sp"
+            android:textColor="@color/text_secondary" android:gravity="center"/>
+
+        <!-- Timer -->
+        <TextView android:id="@+id/tvTimer"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="60s" android:textSize="22sp" android:textStyle="bold"
+            android:textColor="@color/accent_orange" android:fontFamily="sans-serif-black"/>
+    </LinearLayout>
+
+    <!-- VS Card - center -->
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <!-- My side -->
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical"
+            android:gravity="center"
+            android:background="#CC1A1A1A" android:padding="20dp"
+            android:layout_marginEnd="8dp">
+
+            <TextView android:id="@+id/tvMyName"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="You" android:textSize="14sp" android:textStyle="bold"
+                android:textColor="@color/accent_orange" android:maxLines="1"
+                android:ellipsize="end"/>
+
+            <TextView android:id="@+id/tvMyReps"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="0" android:textSize="64sp" android:textStyle="bold"
+                android:textColor="@color/white" android:fontFamily="sans-serif-black"/>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="reps" android:textSize="12sp" android:textColor="@color/text_secondary"/>
+        </LinearLayout>
+
+        <!-- VS -->
+        <TextView android:layout_width="40dp" android:layout_height="wrap_content"
+            android:text="VS" android:textSize="20sp" android:textStyle="bold"
+            android:textColor="@color/accent_orange" android:gravity="center"
+            android:fontFamily="sans-serif-black"/>
+
+        <!-- Opponent side -->
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical"
+            android:gravity="center"
+            android:background="#CC1A1A1A" android:padding="20dp"
+            android:layout_marginStart="8dp">
+
+            <TextView android:id="@+id/tvOpponentName"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Opponent" android:textSize="14sp" android:textStyle="bold"
+                android:textColor="@color/accent_blue" android:maxLines="1"
+                android:ellipsize="end"/>
+
+            <TextView android:id="@+id/tvOpponentReps"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="0" android:textSize="64sp" android:textStyle="bold"
+                android:textColor="@color/white" android:fontFamily="sans-serif-black"/>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="reps" android:textSize="12sp" android:textColor="@color/text_secondary"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Countdown overlay -->
+    <TextView android:id="@+id/tvCountdown"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="3" android:textSize="120sp" android:textStyle="bold"
+        android:textColor="@color/accent_orange" android:fontFamily="sans-serif-black"
+        android:visibility="gone"/>
+
+    <!-- Bottom HUD -->
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:background="#CC000000"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <!-- Phase indicator -->
+        <TextView android:id="@+id/tvPhase"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="→" android:textSize="16sp" android:textStyle="bold"
+            android:textColor="@color/white"
+            android:background="@drawable/chip_bg"
+            android:paddingHorizontal="16dp" android:paddingVertical="4dp"/>
+
+        <!-- Form feedback -->
+        <TextView android:id="@+id/tvFormFeedback"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Get ready!" android:textSize="14sp"
+            android:textColor="#CCFFFFFF" android:layout_marginTop="8dp"/>
+
+        <!-- Status -->
+        <TextView android:id="@+id/tvBattleStatus"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Waiting for opponent..." android:textSize="13sp"
+            android:textColor="@color/text_secondary" android:gravity="center"
+            android:layout_marginTop="6dp"/>
+    </LinearLayout>
+
+</FrameLayout>
