@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
-    id 'com.google.gms.google-services'
+    // google-services plugin disabled: add it back once you have a real google-services.json
+    // id 'com.google.gms.google-services'
 }
 
 android {

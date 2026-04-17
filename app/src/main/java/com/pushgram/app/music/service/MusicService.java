@@ -39,6 +39,10 @@ public class MusicService extends Service {
     private MediaSessionCompat mediaSession;
     private YouTubeApiClient ytClient;
     private SpotifyApiClient spClient;
+    // Cached on main thread in onCreate() so background threads never call getString()
+    private String cachedYtApiKey;
+    private String cachedSpClientId;
+    private String cachedSpClientSecret;
 
     public interface StateListener {
         void onSongChanged(Song song);
@@ -53,6 +57,17 @@ public class MusicService extends Service {
         createNotificationChannel();
         mediaSession = new MediaSessionCompat(this, "PushGramMusic");
         mediaSession.setActive(true);
+        // Cache API keys and initialize clients on the main thread (getString is not thread-safe
+        // in all contexts and ytClient/spClient had a check-then-act race on the executor thread)
+        try {
+            cachedYtApiKey       = getString(com.pushgram.app.R.string.youtube_api_key);
+            cachedSpClientId     = getString(com.pushgram.app.R.string.spotify_client_id);
+            cachedSpClientSecret = getString(com.pushgram.app.R.string.spotify_client_secret);
+            ytClient = new YouTubeApiClient(cachedYtApiKey);
+            spClient = new SpotifyApiClient(cachedSpClientId, cachedSpClientSecret);
+        } catch (Exception e) {
+            android.util.Log.w(TAG, "API keys not configured: " + e.getMessage());
+        }
     }
 
     @Override public int onStartCommand(Intent intent, int flags, int startId) {
@@ -122,8 +137,8 @@ public class MusicService extends Service {
     private String resolveStreamUrl(Song song) throws IOException {
         switch (song.getSource()) {
             case YOUTUBE: {
-                String apiKey = getString(com.pushgram.app.R.string.youtube_api_key);
-                if (ytClient == null) ytClient = new YouTubeApiClient(apiKey);
+                // ytClient initialized in onCreate() on main thread — safe to use here
+                if (ytClient == null) throw new IOException("YouTube client not initialized — check youtube_api_key in strings.xml");
                 String url = ytClient.resolveAudioStreamUrl(song.getId());
                 song.setStreamUrl(url); return url;
             }
