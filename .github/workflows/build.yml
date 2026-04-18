@@ -28,6 +28,15 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
+      - name: Debug wrapper
+        run: |
+          echo "=== CWD ===" && pwd
+          echo "=== Jar exists ===" && ls -la gradle/wrapper/
+          echo "=== Java ===" && java -version
+          echo "=== Test jar directly ===" 
+          java -classpath gradle/wrapper/gradle-wrapper.jar \
+            org.gradle.wrapper.GradleWrapperMain --version || true
+
       - name: Build Debug APK
         run: ./gradlew assembleDebug --no-daemon --stacktrace
 
