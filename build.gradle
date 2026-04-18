@@ -5,7 +5,8 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.2.0'
-        // classpath 'com.google.gms:google-services:4.4.0'  // re-enable when google-services.json is configured
+        // Uncomment below once you have a real google-services.json:
+        // classpath 'com.google.gms:google-services:4.4.0'
     }
 }
 
@@ -16,6 +17,7 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+// Fixed: rootProject.buildDir is deprecated in Gradle 8 → use layout API instead
+tasks.register('clean', Delete) {
+    delete layout.buildDirectory
 }
