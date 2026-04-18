@@ -22,30 +22,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Set up Gradle 8.2
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '8.2'
-
       - name: Write local.properties
-        run: |
-          echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
-          echo "local.properties written:"
-          cat local.properties
+        run: echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
 
-      - name: Verify Android SDK platforms
-        run: |
-          ls /usr/local/lib/android/sdk/platforms/ | tail -6
+      - name: Make gradlew executable
+        run: chmod +x gradlew
 
       - name: Build Debug APK
-        run: |
-          export ANDROID_HOME=/usr/local/lib/android/sdk
-          export ANDROID_SDK_ROOT=/usr/local/lib/android/sdk
-          gradle assembleDebug --no-daemon --stacktrace
-
-      - name: Find APK
-        if: always()
-        run: find . -name "*.apk" 2>/dev/null || echo "No APK produced"
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4

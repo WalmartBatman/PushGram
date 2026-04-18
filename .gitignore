@@ -1,0 +1,12 @@
+# Gradle build cache (not the wrapper)
+.gradle/
+build/
+app/build/
+local.properties
+
+# IDE
+.idea/
+*.iml
+
+# OS
+.DS_Store
