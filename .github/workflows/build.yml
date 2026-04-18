@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
@@ -19,39 +19,34 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Gradle 8.2
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '8.2'
+      - name: Get Gradle wrapper JAR
+        run: |
+          mkdir -p gradle/wrapper
+          # services.gradle.org is fully accessible from GitHub Actions runners
+          curl -fL \
+            "https://services.gradle.org/distributions/gradle-8.2-bin.zip" \
+            -o /tmp/gradle.zip
+          unzip -o /tmp/gradle.zip -d /tmp/gradle-unzipped/
+          # The wrapper jar is inside the lib directory of the distribution
+          find /tmp/gradle-unzipped/ -name "gradle-wrapper-*.jar" \
+            | head -1 | xargs -I{} cp {} gradle/wrapper/gradle-wrapper.jar
+          echo "Wrapper JAR: $(wc -c < gradle/wrapper/gradle-wrapper.jar) bytes"
 
-      - name: Cache Gradle packages
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
+      - name: Cache Gradle dependencies
         uses: actions/cache@v4
         with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
+          path: ~/.gradle/caches
           key: gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: gradle-
 
-      - name: Show project structure (debug)
-        run: |
-          ls -la
-          gradle --version
-          cat settings.gradle
-          cat build.gradle | head -20
-
       - name: Build Debug APK
-        run: gradle assembleDebug --stacktrace --info 2>&1 | tee build.log || (cat build.log | grep -E "error:|FAILED|Exception|cannot find" | head -60 && exit 1)
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: PushGram-debug
           path: app/build/outputs/apk/debug/app-debug.apk
-
-      - name: Upload build log on failure
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-log
-          path: build.log
