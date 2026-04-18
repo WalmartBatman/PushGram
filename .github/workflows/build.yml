@@ -5,9 +5,6 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,13 +23,35 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.2'
-          cache-read-only: false
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: gradle-
+
+      - name: Show project structure (debug)
+        run: |
+          ls -la
+          gradle --version
+          cat settings.gradle
+          cat build.gradle | head -20
 
       - name: Build Debug APK
-        run: gradle assembleDebug --stacktrace --info
+        run: gradle assembleDebug --stacktrace --info 2>&1 | tee build.log || (cat build.log | grep -E "error:|FAILED|Exception|cannot find" | head -60 && exit 1)
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: PushGram-debug
           path: app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Upload build log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build.log
