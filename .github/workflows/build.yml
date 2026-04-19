@@ -27,7 +27,7 @@ jobs:
         with:
           gradle-version: '8.2'
           cache-read-only: false
-          validate-wrappers: false   # JAR is from Gradle 4.4.1; regenerated below
+          validate-wrappers: false
 
       - name: Regenerate Gradle wrapper JAR
         run: gradle wrapper --gradle-version 8.2
@@ -35,14 +35,14 @@ jobs:
       - name: Write local.properties
         run: echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
 
-      - name: Build Debug APK
+      - name: Build Release APK
         run: |
           chmod +x gradlew
-          ./gradlew assembleDebug --no-daemon --stacktrace
+          ./gradlew assembleRelease --no-daemon --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: PushGram-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: PushGram-release
+          path: app/build/outputs/apk/release/app-release.apk
           if-no-files-found: error
