@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="28dp">
+
+        <!-- Logo + brand -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="💪"
+            android:textSize="56sp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PUSHGRAM"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.14"
+            android:textColor="@color/accent_orange"
+            android:fontFamily="sans-serif-black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Earn your reels."
+            android:textSize="15sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="48dp"/>
+
+        <!-- Error banner -->
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_warning_banner"
+            android:padding="12dp"
+            android:textSize="13sp"
+            android:textColor="#FFCC02"
+            android:visibility="gone"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- ── LANDING ── -->
+        <LinearLayout
+            android:id="@+id/layoutLanding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnCreate"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Create Account"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/accent_orange"
+                android:textColor="@color/bg_dark"
+                app:cornerRadius="16dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_marginBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Log In"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/card_bg"
+                android:textColor="@color/white"
+                app:cornerRadius="16dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"/>
+        </LinearLayout>
+
+        <!-- ── CREATE ACCOUNT ── -->
+        <LinearLayout
+            android:id="@+id/layoutCreate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create Account"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="20dp"/>
+
+            <EditText
+                android:id="@+id/etCreateEmail"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="Email address"
+                android:inputType="textEmailAddress"
+                android:background="@drawable/bg_card"
+                android:padding="14dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:id="@+id/etCreateUser"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="Username"
+                android:inputType="textPersonName"
+                android:background="@drawable/bg_card"
+                android:padding="14dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:id="@+id/etCreatePass"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="Password (min 6 chars)"
+                android:inputType="textPassword"
+                android:background="@drawable/bg_card"
+                android:padding="14dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:layout_marginBottom="20dp"/>
+
+            <Button
+                android:id="@+id/btnSubmitCreate"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Send Verification Code"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/accent_orange"
+                android:textColor="@color/bg_dark"
+                app:cornerRadius="16dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_marginBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnBackFromCreate"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="← Back"
+                android:textSize="13sp"
+                android:backgroundTint="@color/card_bg"
+                android:textColor="@color/text_secondary"
+                app:cornerRadius="12dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"/>
+        </LinearLayout>
+
+        <!-- ── VERIFY OTP ── -->
+        <LinearLayout
+            android:id="@+id/layoutVerify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Check your email"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter the 6-digit code we sent you."
+                android:textSize="13sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginBottom="20dp"/>
+
+            <EditText
+                android:id="@+id/etOtp"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="6-digit code"
+                android:inputType="number"
+                android:background="@drawable/bg_card"
+                android:padding="14dp"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:layout_marginBottom="20dp"/>
+
+            <Button
+                android:id="@+id/btnVerifyOtp"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Verify &amp; Continue"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/accent_orange"
+                android:textColor="@color/bg_dark"
+                app:cornerRadius="16dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_marginBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnBackFromVerify"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="← Back"
+                android:textSize="13sp"
+                android:backgroundTint="@color/card_bg"
+                android:textColor="@color/text_secondary"
+                app:cornerRadius="12dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"/>
+        </LinearLayout>
+
+        <!-- ── LOGIN ── -->
+        <LinearLayout
+            android:id="@+id/layoutLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome back"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="20dp"/>
+
+            <EditText
+                android:id="@+id/etLoginUser"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="Username or email"
+                android:inputType="textPersonName"
+                android:background="@drawable/bg_card"
+                android:padding="14dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:id="@+id/etLoginPass"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:background="@drawable/bg_card"
+                android:padding="14dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:layout_marginBottom="20dp"/>
+
+            <Button
+                android:id="@+id/btnSubmitLogin"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Log In"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/accent_orange"
+                android:textColor="@color/bg_dark"
+                app:cornerRadius="16dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_marginBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnBackFromLogin"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="← Back"
+                android:textSize="13sp"
+                android:backgroundTint="@color/card_bg"
+                android:textColor="@color/text_secondary"
+                app:cornerRadius="12dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

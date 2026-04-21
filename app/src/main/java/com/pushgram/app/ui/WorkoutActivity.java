@@ -42,6 +42,18 @@ public class WorkoutActivity extends AppCompatActivity
         progressionStore = ProgressionStore.getInstance(this);
         rankManager      = RankManager.getInstance(this);
         binding.btnBack.setOnClickListener(v -> finish());
+
+        // Change #5 — camera flip button, always visible during workout
+        binding.btnFlipCamera.setOnClickListener(v -> {
+            if (cameraProcessor != null) {
+                cameraProcessor.switchCamera();
+                boolean isFront = cameraProcessor.isFrontFacing();
+                Toast.makeText(this,
+                    isFront ? "Switched to front camera" : "Switched to back camera",
+                    Toast.LENGTH_SHORT).show();
+            }
+        });
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_GRANTED) {
             startCamera();

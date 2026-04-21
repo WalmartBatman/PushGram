@@ -14,7 +14,7 @@
         android:paddingTop="52dp"
         android:paddingBottom="40dp">
 
-        <!-- Header Row -->
+        <!-- Header Row (Change #3: profile avatar + Change #4: removed IG status from here) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,17 +22,30 @@
             android:gravity="center_vertical"
             android:layout_marginBottom="28dp">
 
-            <LinearLayout
+            <!-- Tappable profile avatar (Change #3) -->
+            <FrameLayout
+                android:id="@+id/ivProfileAvatar"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:gravity="center"
-                android:background="@drawable/bg_icon_circle">
+                android:background="@drawable/bg_icon_circle"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless">
+
+                <ImageView
+                    android:id="@+id/imgProfilePic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"/>
+
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/tvAvatarInitials"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:text="⚡"
-                    android:textSize="22sp"/>
-            </LinearLayout>
+                    android:textSize="22sp"
+                    android:gravity="center"/>
+            </FrameLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -57,6 +70,7 @@
                     android:textColor="@color/text_secondary"/>
             </LinearLayout>
 
+            <!-- Compact status dot (no full banner here anymore) -->
             <TextView
                 android:id="@+id/tvAccessibilityStatus"
                 android:layout_width="wrap_content"
@@ -194,7 +208,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp">
-
             <Button
                 android:id="@+id/btnExercises"
                 android:layout_width="0dp"
@@ -207,7 +220,6 @@
                 android:textColor="@color/white"
                 app:cornerRadius="16dp"
                 android:layout_marginEnd="6dp"/>
-
             <Button
                 android:id="@+id/btnLeaderboard"
                 android:layout_width="0dp"
@@ -226,8 +238,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
-
+            android:layout_marginBottom="24dp">
             <Button
                 android:id="@+id/btnBattle"
                 android:layout_width="0dp"
@@ -240,7 +251,6 @@
                 android:textColor="@color/accent_orange"
                 app:cornerRadius="16dp"
                 android:layout_marginEnd="6dp"/>
-
             <Button
                 android:id="@+id/btnMusic"
                 android:layout_width="0dp"
@@ -255,7 +265,7 @@
                 android:layout_marginStart="6dp"/>
         </LinearLayout>
 
-        <!-- Enable accessibility banner -->
+        <!-- Change #4: Instagram monitoring banner MOVED TO BOTTOM -->
         <LinearLayout
             android:id="@+id/btnEnableAccessibility"
             android:layout_width="match_parent"

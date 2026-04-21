@@ -21,23 +21,33 @@ import com.google.mlkit.vision.pose.defaults.PoseDetectorOptions;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * Change #5 — Camera fix:
+ *  • Defaults to FRONT camera (LENS_FACING_FRONT)
+ *  • switchCamera() toggles front ↔ back at runtime
+ */
 public class CameraProcessor {
 
     private static final String TAG = "CameraProcessor";
+
     private final Context context;
     private final LifecycleOwner lifecycleOwner;
     private final PreviewView previewView;
     private final PushUpAnalyzer.PushUpListener listener;
+
     private PoseDetector poseDetector;
     private ExecutorService cameraExecutor;
     private ProcessCameraProvider cameraProvider;
 
+    // Change #5: default = FRONT camera
+    private int lensFacing = CameraSelector.LENS_FACING_FRONT;
+
     public CameraProcessor(Context ctx, LifecycleOwner owner,
-                            PreviewView preview, PushUpAnalyzer.PushUpListener listener) {
-        this.context = ctx;
+                           PreviewView preview, PushUpAnalyzer.PushUpListener listener) {
+        this.context       = ctx;
         this.lifecycleOwner = owner;
-        this.previewView = preview;
-        this.listener = listener;
+        this.previewView   = preview;
+        this.listener      = listener;
     }
 
     public void start() {
@@ -56,15 +66,30 @@ public class CameraProcessor {
         }, ContextCompat.getMainExecutor(context));
     }
 
+    /** Change #5: flip between front and back camera */
+    public void switchCamera() {
+        lensFacing = (lensFacing == CameraSelector.LENS_FACING_FRONT)
+                   ? CameraSelector.LENS_FACING_BACK
+                   : CameraSelector.LENS_FACING_FRONT;
+        if (cameraProvider != null) bindCamera();
+    }
+
+    public boolean isFrontFacing() {
+        return lensFacing == CameraSelector.LENS_FACING_FRONT;
+    }
+
     private void bindCamera() {
+        if (cameraProvider == null) return;
         Preview preview = new Preview.Builder().build();
         preview.setSurfaceProvider(previewView.getSurfaceProvider());
+
         PushUpAnalyzer analyzer = new PushUpAnalyzer(listener);
         ImageAnalysis imageAnalysis = new ImageAnalysis.Builder()
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST).build();
         imageAnalysis.setAnalyzer(cameraExecutor, ip -> processFrame(ip, analyzer));
+
         CameraSelector selector = new CameraSelector.Builder()
-                .requireLensFacing(CameraSelector.LENS_FACING_BACK).build();
+                .requireLensFacing(lensFacing).build();
         try {
             cameraProvider.unbindAll();
             cameraProvider.bindToLifecycle(lifecycleOwner, selector, preview, imageAnalysis);
@@ -83,8 +108,8 @@ public class CameraProcessor {
     }
 
     public void stop() {
-        if (cameraProvider != null) cameraProvider.unbindAll();
-        if (cameraExecutor != null) cameraExecutor.shutdown();
-        if (poseDetector != null) try { poseDetector.close(); } catch (Exception ignored) {}
+        if (cameraProvider  != null) cameraProvider.unbindAll();
+        if (cameraExecutor  != null) cameraExecutor.shutdown();
+        if (poseDetector    != null) try { poseDetector.close(); } catch (Exception ignored) {}
     }
 }
