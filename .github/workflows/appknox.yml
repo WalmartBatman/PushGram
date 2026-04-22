@@ -4,6 +4,10 @@
 
 name: Appknox Security Scan
 
+permissions:
+  contents: read          # needed by actions/checkout
+  security-events: write  # needed by codeql-action/upload-sarif
+
 on:
   push:
     branches: [ "main" ]
