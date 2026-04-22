@@ -18,10 +18,12 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("pushgram-release.jks")
-            storePassword "pushgram123"
-            keyAlias "pushgram"
-            keyPassword "pushgram123"
+            // Credentials injected via env vars in CI; fall back to local file for dev builds
+            def ks = System.getenv("KEYSTORE_PATH") ?: file("pushgram-release.jks").absolutePath
+            storeFile file(ks)
+            storePassword System.getenv("KEYSTORE_PASS") ?: "pushgram123"
+            keyAlias    System.getenv("KEY_ALIAS")       ?: "pushgram"
+            keyPassword System.getenv("KEY_PASS")        ?: "pushgram123"
         }
     }
 

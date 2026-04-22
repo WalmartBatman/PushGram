@@ -35,10 +35,20 @@ jobs:
       - name: Write local.properties
         run: echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
 
+
+      - name: Decode keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > app/pushgram-release.jks
+
       - name: Build Release APK
         run: |
           chmod +x gradlew
           ./gradlew assembleRelease --no-daemon --stacktrace
+        env:
+          KEYSTORE_PATH: pushgram-release.jks
+          KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
+          KEY_ALIAS:     ${{ secrets.KEY_ALIAS }}
+          KEY_PASS:      ${{ secrets.KEY_PASS }}
 
       - name: Upload APK
         uses: actions/upload-artifact@v4

@@ -47,10 +47,20 @@ jobs:
         run: echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
 
       # Fix #1 + #2: Build release APK (matches build.yml output path)
+
+      - name: Decode keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > app/pushgram-release.jks
+
       - name: Build Release APK
         run: |
           chmod +x gradlew
           ./gradlew assembleRelease --no-daemon
+        env:
+          KEYSTORE_PATH: pushgram-release.jks
+          KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
+          KEY_ALIAS:     ${{ secrets.KEY_ALIAS }}
+          KEY_PASS:      ${{ secrets.KEY_PASS }}
 
       # Fix #1: APK path now points to release (was debug — file did not exist)
       - name: Appknox security scan
