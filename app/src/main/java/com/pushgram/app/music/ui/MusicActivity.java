@@ -16,7 +16,6 @@ import com.pushgram.app.music.model.*;
 import com.pushgram.app.music.service.MusicService;
 
 import java.util.*;
-import java.util.UUID;
 import java.util.concurrent.*;
 
 /**
@@ -139,9 +138,14 @@ public class MusicActivity extends AppCompatActivity implements MusicService.Sta
     /** Step 3 — validate credentials (simulated) + show playlists */
     private void validateAndShowPlaylists(String sourceName, String user, String pass) {
         // Show progress
-        ProgressDialog progress = new ProgressDialog(this);
-        progress.setMessage("Validating your " + sourceName + " account...");
-        progress.setCancelable(false);
+        android.widget.ProgressBar spinner = new android.widget.ProgressBar(this);
+        spinner.setPadding(40, 40, 40, 40);
+        AlertDialog progress = new AlertDialog.Builder(this)
+                .setTitle("Connecting to " + sourceName)
+                .setMessage("Validating your account...")
+                .setView(spinner)
+                .setCancelable(false)
+                .create();
         progress.show();
 
         // Simulate network validation (replace with real OAuth in production)

@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
              .load(uri)
              .transform(new CircleCrop())
              .placeholder(android.R.drawable.ic_menu_gallery)
-             .into(binding.ivProfileAvatar);
+             .into(binding.imgProfilePic);
         binding.tvAvatarInitials.setVisibility(View.GONE);
     }
 
