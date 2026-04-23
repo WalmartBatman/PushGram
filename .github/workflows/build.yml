@@ -49,8 +49,10 @@ jobs:
       - name: Build Release APK
         run: |
           chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon --stacktrace --info 2>&1 | grep -E "error:|FAILED|Exception|Caused by|> Task" | head -40 || true
-          ./gradlew assembleRelease --no-daemon --stacktrace
+          ./gradlew assembleRelease --no-daemon 2>&1 | tee build.log
+          grep -A30 "FAILURE:\|WHAT WENT WRONG\|error:" build.log | head -60 || true --info 2>&1 | grep -E "error:|FAILED|Exception|Caused by|> Task" | head -40 || true
+          ./gradlew assembleRelease --no-daemon 2>&1 | tee build.log
+          grep -A30 "FAILURE:\|WHAT WENT WRONG\|error:" build.log | head -60 || true
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
