@@ -47,7 +47,8 @@ jobs:
       - name: Decode keystore
         run: |
           if [ -n "$KEYSTORE_B64" ]; then
-            echo "$KEYSTORE_B64" | base64 --decode > app/pushgram-release.jks
+            # Strip whitespace/newlines that corrupt base64 when pasted into GitHub Secrets
+            printf '%s' "$KEYSTORE_B64" | tr -d '\r\n ' | base64 --decode > app/pushgram-release.jks
             echo "Keystore decoded from secret."
           elif [ -f "app/pushgram-release.jks" ]; then
             echo "Secret not set — using committed keystore (dev/test build)."
