@@ -18,15 +18,10 @@ android {
 
     signingConfigs {
         release {
-            // CI: decode KEYSTORE_BASE64 secret -> app/pushgram-release.jks, set env vars
-            // Dev: committed app/pushgram-release.jks used directly with defaults
-            def ksPath = System.getenv("KEYSTORE_PATH")
-            def ksFile = ksPath ? new File(rootProject.projectDir, "app/" + ksPath)
-                                : file("pushgram-release.jks")
-            storeFile     ksFile.exists() ? ksFile : file("pushgram-release.jks")
-            storePassword System.getenv("KEYSTORE_PASS") ?: "pushgram123"
-            keyAlias      System.getenv("KEY_ALIAS")     ?: "pushgram"
-            keyPassword   System.getenv("KEY_PASS")      ?: "pushgram123"
+            storeFile file("pushgram-release.jks")
+            storePassword "pushgram123"
+            keyAlias "pushgram"
+            keyPassword "pushgram123"
         }
     }
 

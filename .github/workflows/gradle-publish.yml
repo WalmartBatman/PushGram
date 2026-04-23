@@ -43,31 +43,20 @@ jobs:
       - name: Write local.properties
         run: echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
 
-      # Decode base64 keystore secret → .jks file, then build signed release APK
-      - name: Decode keystore
+      - name: Verify keystore
         run: |
-          if [ -n "$KEYSTORE_B64" ]; then
-            # Strip whitespace/newlines that corrupt base64 when pasted into GitHub Secrets
-            printf '%s' "$KEYSTORE_B64" | tr -d '\r\n ' | base64 --decode > app/pushgram-release.jks
-            echo "Keystore decoded from secret."
-          elif [ -f "app/pushgram-release.jks" ]; then
-            echo "Secret not set — using committed keystore (dev/test build)."
+          if [ -f "app/pushgram-release.jks" ]; then
+            echo "Keystore found at app/pushgram-release.jks"
           else
-            echo "ERROR: No keystore available. Set KEYSTORE_BASE64 secret or commit app/pushgram-release.jks."
+            echo "ERROR: app/pushgram-release.jks not found in repo."
             exit 1
           fi
-        env:
-          KEYSTORE_B64: ${{ secrets.KEYSTORE_BASE64 }}
+
 
       - name: Build release APK
         run: |
           chmod +x gradlew
           ./gradlew assembleRelease --no-daemon
-        env:
-          KEYSTORE_PATH: pushgram-release.jks
-          KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
-          KEY_ALIAS:     ${{ secrets.KEY_ALIAS }}
-          KEY_PASS:      ${{ secrets.KEY_PASS }}
 
       - name: Publish to GitHub Packages
         run: ./gradlew publish --no-daemon
