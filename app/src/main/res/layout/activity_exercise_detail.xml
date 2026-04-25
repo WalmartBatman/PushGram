@@ -29,7 +29,7 @@
 
             <TextView android:id="@+id/tvExerciseEmoji"
                 android:layout_width="56dp" android:layout_height="56dp"
-                android:text="💪" android:textSize="32sp" android:gravity="center"
+                android:text="@string/activity_exercise_detail" android:textSize="32sp" android:gravity="center"
                 android:background="@color/divider" android:layout_marginStart="8dp"/>
 
             <LinearLayout
@@ -39,12 +39,12 @@
 
                 <TextView android:id="@+id/tvExerciseName"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Push-Up" android:textSize="22sp" android:textStyle="bold"
+                    android:text="@string/activity_exercise_detail_pushup" android:textSize="22sp" android:textStyle="bold"
                     android:textColor="@color/white" android:fontFamily="sans-serif-black"/>
 
                 <TextView android:id="@+id/tvExerciseCategory"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Push · ★★☆☆☆" android:textSize="13sp"
+                    android:text="@string/activity_exercise_detail_push" android:textSize="13sp"
                     android:textColor="@color/accent_orange" android:layout_marginTop="2dp"/>
 
             </LinearLayout>
@@ -65,7 +65,7 @@
         <!-- ── MUSCLE TARGETING ── -->
         <TextView
             android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="🎯 MUSCLE TARGETING"
+            android:text="@string/activity_exercise_detail_muscletargeting"
             android:textSize="13sp" android:textStyle="bold" android:letterSpacing="0.1"
             android:textColor="@color/text_secondary"
             android:paddingHorizontal="16dp" android:paddingTop="24dp" android:paddingBottom="8dp"/>
@@ -86,7 +86,7 @@
         <!-- ── CURRENT LEVEL ── -->
         <TextView
             android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="⚡ CURRENT PROGRESSION"
+            android:text="@string/activity_exercise_detail_currentprogress"
             android:textSize="13sp" android:textStyle="bold" android:letterSpacing="0.1"
             android:textColor="@color/text_secondary"
             android:paddingHorizontal="16dp" android:paddingTop="24dp" android:paddingBottom="8dp"/>
@@ -104,12 +104,12 @@
                 <TextView android:id="@+id/tvCurrentLevelName"
                     android:layout_width="0dp" android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Level 1 — Wall Push-Up" android:textSize="17sp"
+                    android:text="@string/activity_exercise_detail_level1wallpushu" android:textSize="17sp"
                     android:textStyle="bold" android:textColor="@color/accent_orange"
                     android:fontFamily="sans-serif-black"/>
                 <TextView android:id="@+id/tvProgressionLabel"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="1/5" android:textSize="13sp" android:textColor="@color/text_secondary"/>
+                    android:text="@string/activity_exercise_detail_15" android:textSize="13sp" android:textColor="@color/text_secondary"/>
             </LinearLayout>
 
             <ProgressBar android:id="@+id/progressionBar"
@@ -125,7 +125,7 @@
 
             <TextView android:id="@+id/tvCurrentLevelGoal"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="Goal: 3 × 15 reps" android:textSize="14sp"
+                android:text="@string/activity_exercise_detail_goal315reps" android:textSize="14sp"
                 android:textStyle="bold" android:textColor="@color/accent_blue"
                 android:layout_marginTop="8dp"/>
 
@@ -141,12 +141,12 @@
                 <TextView android:id="@+id/tvXpPerRep"
                     android:layout_width="0dp" android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="+4 XP per rep" android:textSize="13sp"
+                    android:text="@string/activity_exercise_detail_4xpperrep" android:textSize="13sp"
                     android:textColor="@color/success_green" android:textStyle="bold"/>
 
                 <Button android:id="@+id/btnAdvanceLevel"
                     android:layout_width="wrap_content" android:layout_height="36dp"
-                    android:text="Advance to Level 2"
+                    android:text="@string/activity_exercise_detail_advancetolevel2"
                     android:textSize="11sp"
                     android:backgroundTint="@color/divider"
                     android:textColor="@color/white"
@@ -157,7 +157,7 @@
         <!-- ── PROGRESSION PATH ── -->
         <TextView
             android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="🗺️ PROGRESSION PATH"
+            android:text="@string/activity_exercise_detail_progressionpath"
             android:textSize="13sp" android:textStyle="bold" android:letterSpacing="0.1"
             android:textColor="@color/text_secondary"
             android:paddingHorizontal="16dp" android:paddingTop="24dp" android:paddingBottom="8dp"/>
@@ -170,7 +170,7 @@
         <!-- ── PERSONAL STATS ── -->
         <TextView
             android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="📊 YOUR STATS"
+            android:text="@string/activity_exercise_detail_yourstats"
             android:textSize="13sp" android:textStyle="bold" android:letterSpacing="0.1"
             android:textColor="@color/text_secondary"
             android:paddingHorizontal="16dp" android:paddingTop="24dp" android:paddingBottom="8dp"/>
@@ -186,30 +186,30 @@
                 android:layout_weight="1" android:orientation="vertical" android:gravity="center">
                 <TextView android:id="@+id/tvBestReps"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="0" android:textSize="32sp" android:textStyle="bold"
+                    android:text="@string/activity_battle_0" android:textSize="32sp" android:textStyle="bold"
                     android:textColor="@color/accent_orange" android:fontFamily="sans-serif-black"/>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Best Reps" android:textSize="11sp" android:textColor="@color/text_secondary"/>
+                    android:text="@string/activity_exercise_detail_bestreps" android:textSize="11sp" android:textColor="@color/text_secondary"/>
             </LinearLayout>
 
             <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
                 android:layout_weight="1" android:orientation="vertical" android:gravity="center">
                 <TextView android:id="@+id/tvTotalReps"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="0" android:textSize="32sp" android:textStyle="bold"
+                    android:text="@string/activity_battle_0" android:textSize="32sp" android:textStyle="bold"
                     android:textColor="@color/accent_blue" android:fontFamily="sans-serif-black"/>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Total Reps" android:textSize="11sp" android:textColor="@color/text_secondary"/>
+                    android:text="@string/activity_exercise_detail_totalreps" android:textSize="11sp" android:textColor="@color/text_secondary"/>
             </LinearLayout>
 
             <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
                 android:layout_weight="1" android:orientation="vertical" android:gravity="center">
                 <TextView android:id="@+id/tvWorkoutCount"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="0" android:textSize="32sp" android:textStyle="bold"
+                    android:text="@string/activity_battle_0" android:textSize="32sp" android:textStyle="bold"
                     android:textColor="@color/success_green" android:fontFamily="sans-serif-black"/>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Sessions" android:textSize="11sp" android:textColor="@color/text_secondary"/>
+                    android:text="@string/activity_exercise_detail_sessions" android:textSize="11sp" android:textColor="@color/text_secondary"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -217,7 +217,7 @@
         <!-- Log Workout Button -->
         <Button android:id="@+id/btnLogWorkout"
             android:layout_width="match_parent" android:layout_height="60dp"
-            android:text="+ LOG WORKOUT"
+            android:text="@string/activity_exercise_detail_logworkout"
             android:textSize="15sp" android:textStyle="bold"
             android:backgroundTint="@color/accent_orange"
             android:textColor="@color/bg_dark"

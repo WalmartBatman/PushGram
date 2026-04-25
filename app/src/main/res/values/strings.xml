@@ -8,4 +8,136 @@
     <!-- Spotify Web API: developer.spotify.com/dashboard → Create App -->
     <string name="spotify_client_id">YOUR_SPOTIFY_CLIENT_ID</string>
     <string name="spotify_client_secret">YOUR_SPOTIFY_CLIENT_SECRET</string>
+
+    <!-- Emoji strings (XMLStreamException safe) -->
+    <string name="activity_battle" translatable="false">✕</string>
+    <string name="activity_battle_roomabc123" translatable="false">Room: ABC123</string>
+    <string name="activity_battle_60s" translatable="false">60s</string>
+    <string name="activity_battle_you" translatable="false">You</string>
+    <string name="activity_battle_0" translatable="false">0</string>
+    <string name="activity_battle_reps" translatable="false">reps</string>
+    <string name="activity_battle_vs" translatable="false">VS</string>
+    <string name="activity_battle_opponent" translatable="false">Opponent</string>
+    <string name="activity_battle_3" translatable="false">3</string>
+    <string name="activity_battle_getready" translatable="false">Get ready!</string>
+    <string name="activity_battle_waitingforopponent" translatable="false">Waiting for opponent...</string>
+    <string name="activity_battle_lobby_battlemode" translatable="false">⚔️ Battle Mode</string>
+    <string name="activity_battle_lobby_battlemoderequires" translatable="false">⚠️ Battle mode requires Firebase setup.\nSee README for instructions.</string>
+    <string name="activity_battle_lobby_chooseexercise" translatable="false">Choose exercise:</string>
+    <string name="activity_battle_lobby_howbattleworks" translatable="false">⚔️ How Battle Works</string>
+    <string name="activity_battle_lobby_60secondsmostrepsw" translatable="false">• 60 seconds. Most reps wins.\n• Camera detects your real reps.\n• Winner gets 500 XP, loser gets 100 XP.\n• Both players need the app installed.\n• Share your room code for opponent to join.</string>
+    <string name="activity_battle_lobby_createroom" translatable="false">⚔️ CREATE ROOM</string>
+    <string name="activity_battle_lobby_or" translatable="false"> OR </string>
+    <string name="activity_battle_lobby_enterroomcode" translatable="false">Enter room code:</string>
+    <string name="activity_battle_lobby_joinroom" translatable="false">JOIN ROOM</string>
+    <string name="activity_blocker" translatable="false">🏋️</string>
+    <string name="activity_blocker_earnyourreels" translatable="false">Earn Your Reels!</string>
+    <string name="activity_blocker_noreelcreditsleft" translatable="false">No reel credits left!</string>
+    <string name="activity_blocker_reelcredits" translatable="false">Reel Credits</string>
+    <string name="activity_blocker_dopushupstounlock" translatable="false">DO PUSH-UPS TO UNLOCK</string>
+    <string name="activity_blocker_goback" translatable="false">Go Back</string>
+    <string name="activity_exercise_detail" translatable="false">💪</string>
+    <string name="activity_exercise_detail_pushup" translatable="false">Push-Up</string>
+    <string name="activity_exercise_detail_push" translatable="false">Push · ★★☆☆☆</string>
+    <string name="activity_exercise_detail_muscletargeting" translatable="false">🎯 MUSCLE TARGETING</string>
+    <string name="activity_exercise_detail_currentprogress" translatable="false">⚡ CURRENT PROGRESSION</string>
+    <string name="activity_exercise_detail_level1wallpushu" translatable="false">Level 1 — Wall Push-Up</string>
+    <string name="activity_exercise_detail_15" translatable="false">1/5</string>
+    <string name="activity_exercise_detail_goal315reps" translatable="false">Goal: 3 × 15 reps</string>
+    <string name="activity_exercise_detail_4xpperrep" translatable="false">+4 XP per rep</string>
+    <string name="activity_exercise_detail_advancetolevel2" translatable="false">Advance to Level 2</string>
+    <string name="activity_exercise_detail_progressionpath" translatable="false">🗺️ PROGRESSION PATH</string>
+    <string name="activity_exercise_detail_yourstats" translatable="false">📊 YOUR STATS</string>
+    <string name="activity_exercise_detail_bestreps" translatable="false">Best Reps</string>
+    <string name="activity_exercise_detail_totalreps" translatable="false">Total Reps</string>
+    <string name="activity_exercise_detail_sessions" translatable="false">Sessions</string>
+    <string name="activity_exercise_detail_logworkout" translatable="false">+ LOG WORKOUT</string>
+    <string name="activity_exercises_exercises" translatable="false">🏋️ Exercises</string>
+    <string name="activity_exercises_rookie" translatable="false">🥉 Rookie</string>
+    <string name="activity_exercises_0xp" translatable="false">0 XP</string>
+    <string name="activity_exercises_500xptobronze" translatable="false">500 XP to Bronze</string>
+    <string name="activity_exercises_all" translatable="false">All</string>
+    <string name="activity_exercises_push" translatable="false">💪 Push</string>
+    <string name="activity_exercises_pull" translatable="false">🔝 Pull</string>
+    <string name="activity_exercises_legs" translatable="false">🦵 Legs</string>
+    <string name="activity_exercises_core" translatable="false">🎯 Core</string>
+    <string name="activity_exercises_skills" translatable="false">⚡ Skills</string>
+    <string name="activity_leaderboard_leaderboard" translatable="false">🏆 Leaderboard</string>
+    <string name="activity_leaderboard_name" translatable="false">✏️ Name</string>
+    <string name="activity_leaderboard_athlete" translatable="false">Athlete</string>
+    <string name="activity_leaderboard_0totalreps" translatable="false">0 total reps</string>
+    <string name="activity_leaderboard_yourrank" translatable="false">Your rank: —</string>
+    <string name="activity_leaderboard_local" translatable="false">📱 Local</string>
+    <string name="activity_leaderboard_global" translatable="false">🌍 Global</string>
+    <string name="activity_leaderboard_localrankings" translatable="false">📱 Local Rankings</string>
+    <string name="activity_leaderboard_playersonthisdevice" translatable="false">Players on this device</string>
+    <string name="activity_main" translatable="false">⚡</string>
+    <string name="activity_main_pushgram" translatable="false">PUSHGRAM</string>
+    <string name="activity_main_earnyourreels" translatable="false">Earn your reels.</string>
+    <string name="activity_main" translatable="false">⚠️</string>
+    <string name="activity_main_credits" translatable="false">🎬  Credits</string>
+    <string name="activity_main_pushups" translatable="false">💪  Push-ups</string>
+    <string name="activity_main_startworkout" translatable="false">💪   START WORKOUT</string>
+    <string name="activity_main_exercises" translatable="false">🏋️  Exercises</string>
+    <string name="activity_main_rankings" translatable="false">🏆  Rankings</string>
+    <string name="activity_main_battle" translatable="false">⚔️  Battle</string>
+    <string name="activity_main_music" translatable="false">🎵  Music</string>
+    <string name="activity_main_enableinstagrammonit" translatable="false">Enable Instagram Monitor</string>
+    <string name="activity_main_taptoactivatethepayw" translatable="false">Tap to activate the paywall</string>
+    <string name="activity_music_workoutmusic" translatable="false">🎵 Workout Music</string>
+    <string name="activity_music_import" translatable="false">Import</string>
+    <string name="activity_music_0songsacross0playlis" translatable="false">0 songs across 0 playlists</string>
+    <string name="activity_music" translatable="false">🎧</string>
+    <string name="activity_music_noplaylistsyet" translatable="false">No playlists yet</string>
+    <string name="activity_music_taptocreateonenorimp" translatable="false">Tap + to create one\nor Import from YouTube / Spotify</string>
+    <string name="activity_music_nosongplaying" translatable="false">No song playing</string>
+    <string name="activity_onboarding_createaccount" translatable="false">Create Account</string>
+    <string name="activity_onboarding_login" translatable="false">Log In</string>
+    <string name="activity_onboarding_sendverificationcode" translatable="false">Send Verification Code</string>
+    <string name="activity_onboarding_back" translatable="false">← Back</string>
+    <string name="activity_onboarding_checkyouremail" translatable="false">Check your email</string>
+    <string name="activity_onboarding_enterthe6digitcodewe" translatable="false">Enter the 6-digit code we sent you.</string>
+    <string name="activity_onboarding_verifyampcontinue" translatable="false">Verify &amp;amp; Continue</string>
+    <string name="activity_onboarding_welcomeback" translatable="false">Welcome back</string>
+    <string name="activity_playlist_detail_playlist" translatable="false">Playlist</string>
+    <string name="activity_playlist_detail_0songs" translatable="false">0 songs</string>
+    <string name="activity_playlist_detail_playall" translatable="false">▶  Play All</string>
+    <string name="activity_playlist_detail_shuffle" translatable="false">🔀  Shuffle</string>
+    <string name="activity_workout" translatable="false">🔄</string>
+    <string name="activity_workout_pushups" translatable="false">💪 Push-Ups</string>
+    <string name="activity_workout_squats" translatable="false">🏋 Squats</string>
+    <string name="activity_workout_crunches" translatable="false">🔥 Crunches</string>
+    <string name="activity_workout_positionyourselfinfr" translatable="false">Position yourself in frame</string>
+    <string name="activity_workout_reps" translatable="false">Reps</string>
+    <string name="activity_workout_sessioncredits" translatable="false">Session Credits</string>
+    <string name="activity_workout_total" translatable="false">🎬 Total</string>
+    <string name="activity_workout_1credit" translatable="false">+1 Credit! 🎬</string>
+    <string name="dialog_import_importfrom" translatable="false">Import from:</string>
+    <string name="dialog_import_youtube" translatable="false">▶  YouTube</string>
+    <string name="dialog_import_spotify" translatable="false">♫  Spotify</string>
+    <string name="dialog_import_playlistortrackurlid" translatable="false">Playlist or Track URL / ID:</string>
+    <string name="dialog_import_addtoplaylist" translatable="false">Add to playlist:</string>
+    <string name="dialog_import_youtubeaudioonly1mbm" translatable="false">💡 YouTube: audio-only ~1MB/min\nSpotify: 30-sec previews or opens Spotify app</string>
+    <string name="dialog_log_workout_howmanysetsandrepsdi" translatable="false">How many sets and reps did you do?</string>
+    <string name="dialog_log_workout_sets" translatable="false">Sets:</string>
+    <string name="dialog_log_workout_reps" translatable="false">Reps:</string>
+    <string name="dialog_log_workout_10" translatable="false">10</string>
+    <string name="dialog_log_workout_120xp" translatable="false">+120 XP</string>
+    <string name="item_leaderboard_1" translatable="false">#1</string>
+    <string name="item_leaderboard_ironmike" translatable="false">IronMike</string>
+    <string name="item_leaderboard_gold" translatable="false">🥇 Gold</string>
+    <string name="item_leaderboard_8420xp" translatable="false">8420 XP</string>
+    <string name="item_leaderboard_2100reps" translatable="false">2100 reps</string>
+    <string name="item_leaderboard_12w" translatable="false"> · 12W</string>
+    <string name="item_progression_level_1" translatable="false">1</string>
+    <string name="item_progression_level_wallpushup" translatable="false">Wall Push-Up</string>
+    <string name="item_progression_level_315reps2xprep" translatable="false">3 × 15 reps · 2 XP/rep</string>
+    <string name="item_progression_level_current" translatable="false">▶ Current</string>
+    <string name="item_song_yt" translatable="false">▶ YT</string>
+    <!-- Music player controls -->
+    <string name="activity_music_back" translatable="false">←</string>
+    <string name="activity_music_prev" translatable="false">⏮</string>
+    <string name="activity_music_next" translatable="false">⏭</string>
+    <string name="activity_music_play" translatable="false">▶</string>
+    <string name="activity_music_add" translatable="false">+</string>
 </resources>

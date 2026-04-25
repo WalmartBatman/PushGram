@@ -22,7 +22,7 @@
     </LinearLayout>
     <TextView android:id="@+id/tvSongSource"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:text="▶ YT" android:textSize="10sp" android:textStyle="bold"
+        android:text="@string/item_song_yt" android:textSize="10sp" android:textStyle="bold"
         android:layout_marginEnd="8dp"/>
     <TextView android:id="@+id/tvSongDuration"
         android:layout_width="36dp" android:layout_height="wrap_content"

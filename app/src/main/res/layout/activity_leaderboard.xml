@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,13 +25,13 @@
 
             <TextView android:layout_width="0dp" android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="🏆 Leaderboard" android:textSize="22sp" android:textStyle="bold"
+                android:text="@string/activity_leaderboard_leaderboard" android:textSize="22sp" android:textStyle="bold"
                 android:textColor="@color/white" android:fontFamily="sans-serif-black"
                 android:layout_marginStart="8dp"/>
 
             <Button android:id="@+id/btnEditName"
                 android:layout_width="wrap_content" android:layout_height="32dp"
-                android:text="✏️ Name" android:textSize="11sp"
+                android:text="@string/activity_leaderboard_name" android:textSize="11sp"
                 android:backgroundTint="@color/divider" android:textColor="@color/white"
                 app:cornerRadius="16dp"/>
         </LinearLayout>
@@ -45,11 +46,11 @@
                 android:layout_weight="1" android:orientation="vertical">
                 <TextView android:id="@+id/tvMyName"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Athlete" android:textSize="16sp" android:textStyle="bold"
+                    android:text="@string/activity_leaderboard_athlete" android:textSize="16sp" android:textStyle="bold"
                     android:textColor="@color/white"/>
                 <TextView android:id="@+id/tvMyRank"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="🥉 Rookie" android:textSize="14sp"
+                    android:text="@string/activity_exercises_rookie" android:textSize="14sp"
                     android:textColor="@color/accent_orange" android:layout_marginTop="2dp"/>
             </LinearLayout>
 
@@ -57,15 +58,15 @@
                 android:orientation="vertical" android:gravity="end">
                 <TextView android:id="@+id/tvMyXp"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="0 XP" android:textSize="16sp" android:textStyle="bold"
+                    android:text="@string/activity_exercises_0xp" android:textSize="16sp" android:textStyle="bold"
                     android:textColor="@color/accent_orange"/>
                 <TextView android:id="@+id/tvMyReps"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="0 total reps" android:textSize="11sp"
+                    android:text="@string/activity_leaderboard_0totalreps" android:textSize="11sp"
                     android:textColor="@color/text_secondary"/>
                 <TextView android:id="@+id/tvMyPosition"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Your rank: —" android:textSize="12sp"
+                    android:text="@string/activity_leaderboard_yourrank" android:textSize="12sp"
                     android:textColor="@color/accent_blue" android:layout_marginTop="2dp"/>
             </LinearLayout>
         </LinearLayout>
@@ -80,12 +81,12 @@
 
         <Button android:id="@+id/btnLocalTab"
             android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1"
-            android:text="📱 Local" android:textSize="14sp" android:textStyle="bold"
+            android:text="@string/activity_leaderboard_local" android:textSize="14sp" android:textStyle="bold"
             android:backgroundTint="@android:color/transparent" android:textColor="@color/accent_orange"/>
 
         <Button android:id="@+id/btnGlobalTab"
             android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1"
-            android:text="🌍 Global" android:textSize="14sp" android:textStyle="bold"
+            android:text="@string/activity_leaderboard_global" android:textSize="14sp" android:textStyle="bold"
             android:backgroundTint="@android:color/transparent" android:textColor="@color/text_secondary"
             android:alpha="0.5"/>
     </LinearLayout>
@@ -101,11 +102,11 @@
             android:layout_weight="1" android:orientation="vertical">
             <TextView android:id="@+id/tvLeaderboardTitle"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="📱 Local Rankings" android:textSize="16sp" android:textStyle="bold"
+                android:text="@string/activity_leaderboard_localrankings" android:textSize="16sp" android:textStyle="bold"
                 android:textColor="@color/white"/>
             <TextView android:id="@+id/tvLeaderboardSubtitle"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Players on this device" android:textSize="12sp"
+                android:text="@string/activity_leaderboard_playersonthisdevice" android:textSize="12sp"
                 android:textColor="@color/text_secondary"/>
         </LinearLayout>
 

@@ -11,7 +11,7 @@
     <!-- Rank number / medal -->
     <TextView android:id="@+id/tvLeaderRank"
         android:layout_width="40dp" android:layout_height="wrap_content"
-        android:text="#1" android:textSize="18sp" android:textStyle="bold"
+        android:text="@string/item_leaderboard_1" android:textSize="18sp" android:textStyle="bold"
         android:textColor="@color/accent_orange" android:gravity="center"/>
 
     <!-- Name + tier -->
@@ -21,12 +21,12 @@
 
         <TextView android:id="@+id/tvLeaderName"
             android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="IronMike" android:textSize="15sp" android:textStyle="bold"
+            android:text="@string/item_leaderboard_ironmike" android:textSize="15sp" android:textStyle="bold"
             android:textColor="@color/white" android:maxLines="1" android:ellipsize="end"/>
 
         <TextView android:id="@+id/tvLeaderTier"
             android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="🥇 Gold" android:textSize="12sp" android:textColor="#FFD700"/>
+            android:text="@string/item_leaderboard_gold" android:textSize="12sp" android:textColor="#FFD700"/>
     </LinearLayout>
 
     <!-- XP -->
@@ -35,7 +35,7 @@
 
         <TextView android:id="@+id/tvLeaderXp"
             android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="8420 XP" android:textSize="14sp" android:textStyle="bold"
+            android:text="@string/item_leaderboard_8420xp" android:textSize="14sp" android:textStyle="bold"
             android:textColor="@color/accent_orange"/>
 
         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -43,12 +43,12 @@
 
             <TextView android:id="@+id/tvLeaderReps"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="2100 reps" android:textSize="11sp"
+                android:text="@string/item_leaderboard_2100reps" android:textSize="11sp"
                 android:textColor="@color/text_secondary"/>
 
             <TextView android:id="@+id/tvLeaderWins"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text=" · 12W" android:textSize="11sp"
+                android:text="@string/item_leaderboard_12w" android:textSize="11sp"
                 android:textColor="@color/success_green"/>
         </LinearLayout>
     </LinearLayout>

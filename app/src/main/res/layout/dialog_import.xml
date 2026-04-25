@@ -4,7 +4,7 @@
     android:orientation="vertical" android:padding="20dp">
 
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:text="Import from:" android:textSize="14sp" android:textStyle="bold"
+        android:text="@string/dialog_import_importfrom" android:textSize="14sp" android:textStyle="bold"
         android:textColor="#FFFFFF" android:layout_marginBottom="8dp"/>
 
     <RadioGroup android:id="@+id/rgSource"
@@ -12,16 +12,16 @@
         android:orientation="horizontal" android:layout_marginBottom="16dp">
         <RadioButton android:id="@+id/rbYouTube"
             android:layout_width="0dp" android:layout_height="wrap_content"
-            android:layout_weight="1" android:text="▶  YouTube"
+            android:layout_weight="1" android:text="@string/dialog_import_youtube"
             android:checked="true" android:textColor="#FFFFFF" android:buttonTint="#FF0000"/>
         <RadioButton android:id="@+id/rbSpotify"
             android:layout_width="0dp" android:layout_height="wrap_content"
-            android:layout_weight="1" android:text="♫  Spotify"
+            android:layout_weight="1" android:text="@string/dialog_import_spotify"
             android:textColor="#FFFFFF" android:buttonTint="#1DB954"/>
     </RadioGroup>
 
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:text="Playlist or Track URL / ID:"
+        android:text="@string/dialog_import_playlistortrackurlid"
         android:textSize="13sp" android:textColor="#AAAAAA" android:layout_marginBottom="6dp"/>
 
     <EditText android:id="@+id/etImportUrl"
@@ -31,14 +31,14 @@
         android:textSize="13sp" android:paddingVertical="12dp"/>
 
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:text="Add to playlist:" android:textSize="13sp" android:textColor="#AAAAAA"
+        android:text="@string/dialog_import_addtoplaylist" android:textSize="13sp" android:textColor="#AAAAAA"
         android:layout_marginTop="16dp" android:layout_marginBottom="6dp"/>
 
     <Spinner android:id="@+id/spinnerPlaylist"
         android:layout_width="match_parent" android:layout_height="48dp"/>
 
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:text="💡 YouTube: audio-only ~1MB/min\nSpotify: 30-sec previews or opens Spotify app"
+        android:text="@string/dialog_import_youtubeaudioonly1mbm"
         android:textSize="11sp" android:textColor="#666666"
         android:lineSpacingExtra="3dp" android:layout_marginTop="16dp"/>
 </LinearLayout>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,7 +20,7 @@
                 android:text="←" android:textSize="18sp" android:backgroundTint="@android:color/transparent"
                 android:textColor="@color/white" android:padding="0dp"/>
             <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-                android:text="🏋️ Exercises" android:textSize="22sp" android:textStyle="bold"
+                android:text="@string/activity_exercises_exercises" android:textSize="22sp" android:textStyle="bold"
                 android:textColor="@color/white" android:fontFamily="sans-serif-black" android:layout_marginStart="8dp"/>
         </LinearLayout>
 
@@ -27,17 +28,17 @@
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
             android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="12dp">
             <TextView android:id="@+id/tvRank" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="🥉 Rookie" android:textSize="16sp" android:textStyle="bold"
+                android:text="@string/activity_exercises_rookie" android:textSize="16sp" android:textStyle="bold"
                 android:textColor="@color/accent_orange"/>
             <TextView android:id="@+id/tvXp" android:layout_width="0dp" android:layout_height="wrap_content"
-                android:layout_weight="1" android:text="0 XP" android:textSize="13sp"
+                android:layout_weight="1" android:text="@string/activity_exercises_0xp" android:textSize="13sp"
                 android:textColor="@color/text_secondary" android:gravity="end"/>
         </LinearLayout>
         <ProgressBar android:id="@+id/rankProgress" style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent" android:layout_height="8dp"
             android:progressTint="@color/accent_orange" android:progress="0" android:layout_marginTop="6dp"/>
         <TextView android:id="@+id/tvXpToNext" android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="500 XP to Bronze" android:textSize="11sp" android:textColor="@color/text_secondary"
+            android:text="@string/activity_exercises_500xptobronze" android:textSize="11sp" android:textColor="@color/text_secondary"
             android:layout_marginTop="4dp"/>
 
     </LinearLayout>
@@ -50,22 +51,22 @@
         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:orientation="horizontal" android:padding="12dp">
             <Button android:id="@+id/chipAll" android:layout_width="wrap_content" android:layout_height="36dp"
-                android:text="All" android:textSize="12sp" android:backgroundTint="#FF6B35"
+                android:text="@string/activity_exercises_all" android:textSize="12sp" android:backgroundTint="#FF6B35"
                 app:cornerRadius="18dp" android:textColor="@color/bg_dark" android:layout_marginEnd="8dp"/>
             <Button android:id="@+id/chipPush" android:layout_width="wrap_content" android:layout_height="36dp"
-                android:text="💪 Push" android:textSize="12sp" android:backgroundTint="@color/card_bg"
+                android:text="@string/activity_exercises_push" android:textSize="12sp" android:backgroundTint="@color/card_bg"
                 app:cornerRadius="18dp" android:textColor="@color/white" android:layout_marginEnd="8dp"/>
             <Button android:id="@+id/chipPull" android:layout_width="wrap_content" android:layout_height="36dp"
-                android:text="🔝 Pull" android:textSize="12sp" android:backgroundTint="@color/card_bg"
+                android:text="@string/activity_exercises_pull" android:textSize="12sp" android:backgroundTint="@color/card_bg"
                 app:cornerRadius="18dp" android:textColor="@color/white" android:layout_marginEnd="8dp"/>
             <Button android:id="@+id/chipLegs" android:layout_width="wrap_content" android:layout_height="36dp"
-                android:text="🦵 Legs" android:textSize="12sp" android:backgroundTint="@color/card_bg"
+                android:text="@string/activity_exercises_legs" android:textSize="12sp" android:backgroundTint="@color/card_bg"
                 app:cornerRadius="18dp" android:textColor="@color/white" android:layout_marginEnd="8dp"/>
             <Button android:id="@+id/chipCore" android:layout_width="wrap_content" android:layout_height="36dp"
-                android:text="🎯 Core" android:textSize="12sp" android:backgroundTint="@color/card_bg"
+                android:text="@string/activity_exercises_core" android:textSize="12sp" android:backgroundTint="@color/card_bg"
                 app:cornerRadius="18dp" android:textColor="@color/white" android:layout_marginEnd="8dp"/>
             <Button android:id="@+id/chipSkills" android:layout_width="wrap_content" android:layout_height="36dp"
-                android:text="⚡ Skills" android:textSize="12sp" android:backgroundTint="@color/card_bg"
+                android:text="@string/activity_exercises_skills" android:textSize="12sp" android:backgroundTint="@color/card_bg"
                 app:cornerRadius="18dp" android:textColor="@color/white"/>
         </LinearLayout>
     </HorizontalScrollView>

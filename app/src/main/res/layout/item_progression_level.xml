@@ -11,7 +11,7 @@
     <!-- Level number circle -->
     <TextView android:id="@+id/tvLevelNumber"
         android:layout_width="36dp" android:layout_height="36dp"
-        android:text="1" android:textSize="16sp" android:textStyle="bold"
+        android:text="@string/item_progression_level_1" android:textSize="16sp" android:textStyle="bold"
         android:textColor="@color/white" android:gravity="center"
         android:background="@color/divider"/>
 
@@ -23,19 +23,19 @@
 
         <TextView android:id="@+id/tvLevelName"
             android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Wall Push-Up" android:textSize="14sp" android:textStyle="bold"
+            android:text="@string/item_progression_level_wallpushup" android:textSize="14sp" android:textStyle="bold"
             android:textColor="@color/white"/>
 
         <TextView android:id="@+id/tvLevelGoal"
             android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="3 × 15 reps · 2 XP/rep" android:textSize="12sp"
+            android:text="@string/item_progression_level_315reps2xprep" android:textSize="12sp"
             android:textColor="@color/text_secondary" android:layout_marginTop="2dp"/>
     </LinearLayout>
 
     <!-- Status badge -->
     <TextView android:id="@+id/tvLevelStatus"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:text="▶ Current" android:textSize="12sp"
+        android:text="@string/item_progression_level_current" android:textSize="12sp"
         android:textColor="@color/accent_orange"/>
 
 </LinearLayout>

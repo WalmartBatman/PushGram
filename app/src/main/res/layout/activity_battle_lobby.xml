@@ -19,7 +19,7 @@
                 android:backgroundTint="@android:color/transparent"
                 android:textColor="@color/white" android:padding="0dp"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="⚔️ Battle Mode" android:textSize="24sp" android:textStyle="bold"
+                android:text="@string/activity_battle_lobby_battlemode" android:textSize="24sp" android:textStyle="bold"
                 android:textColor="@color/white" android:fontFamily="sans-serif-black"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
@@ -27,7 +27,7 @@
         <!-- Firebase warning -->
         <TextView android:id="@+id/tvFirebaseWarning"
             android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="⚠️ Battle mode requires Firebase setup.\nSee README for instructions."
+            android:text="@string/activity_battle_lobby_battlemoderequires"
             android:textSize="13sp" android:textColor="#FFDD88"
             android:background="@color/card_bg" android:padding="12dp"
             android:lineSpacingExtra="3dp"
@@ -36,7 +36,7 @@
 
         <!-- Exercise picker -->
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="Choose exercise:" android:textSize="14sp" android:textStyle="bold"
+            android:text="@string/activity_battle_lobby_chooseexercise" android:textSize="14sp" android:textStyle="bold"
             android:textColor="@color/white" android:layout_marginBottom="8dp"/>
 
         <Spinner android:id="@+id/spinnerExercise"
@@ -50,11 +50,11 @@
             android:padding="16dp" android:layout_marginBottom="24dp">
 
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="⚔️ How Battle Works"
+                android:text="@string/activity_battle_lobby_howbattleworks"
                 android:textSize="15sp" android:textStyle="bold" android:textColor="@color/white"
                 android:layout_marginBottom="8dp"/>
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="• 60 seconds. Most reps wins.\n• Camera detects your real reps.\n• Winner gets 500 XP, loser gets 100 XP.\n• Both players need the app installed.\n• Share your room code for opponent to join."
+                android:text="@string/activity_battle_lobby_60secondsmostrepsw"
                 android:textSize="13sp" android:textColor="@color/text_secondary"
                 android:lineSpacingExtra="4dp"/>
         </LinearLayout>
@@ -62,7 +62,7 @@
         <!-- Create room -->
         <Button android:id="@+id/btnCreate"
             android:layout_width="match_parent" android:layout_height="60dp"
-            android:text="⚔️ CREATE ROOM"
+            android:text="@string/activity_battle_lobby_createroom"
             android:textSize="16sp" android:textStyle="bold"
             android:backgroundTint="@color/accent_orange"
             android:textColor="@color/bg_dark"
@@ -83,7 +83,7 @@
             <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"
                 android:background="@color/divider"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text=" OR " android:textSize="13sp" android:textColor="@color/text_secondary"
+                android:text="@string/activity_battle_lobby_or" android:textSize="13sp" android:textColor="@color/text_secondary"
                 android:layout_marginHorizontal="8dp"/>
             <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"
                 android:background="@color/divider"/>
@@ -91,7 +91,7 @@
 
         <!-- Join room -->
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="Enter room code:" android:textSize="14sp" android:textStyle="bold"
+            android:text="@string/activity_battle_lobby_enterroomcode" android:textSize="14sp" android:textStyle="bold"
             android:textColor="@color/white" android:layout_marginTop="12dp"
             android:layout_marginBottom="8dp"/>
 
@@ -105,7 +105,7 @@
 
         <Button android:id="@+id/btnJoin"
             android:layout_width="match_parent" android:layout_height="60dp"
-            android:text="JOIN ROOM"
+            android:text="@string/activity_battle_lobby_joinroom"
             android:textSize="16sp" android:textStyle="bold"
             android:backgroundTint="@color/card_bg"
             android:textColor="@color/accent_blue"

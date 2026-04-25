@@ -66,7 +66,7 @@
             android:id="@+id/btnFlipCamera"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:text="🔄"
+            android:text="@string/activity_workout"
             android:textSize="16sp"
             android:backgroundTint="#44FFFFFF"
             android:textColor="@color/white"
@@ -96,7 +96,7 @@
                 android:id="@+id/chipPushups"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="💪 Push-Ups"
+                android:text="@string/activity_workout_pushups"
                 android:checked="true"
                 style="@style/Widget.MaterialComponents.Chip.Choice"/>
 
@@ -104,14 +104,14 @@
                 android:id="@+id/chipSquats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="🏋 Squats"
+                android:text="@string/activity_workout_squats"
                 style="@style/Widget.MaterialComponents.Chip.Choice"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipCrunches"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="🔥 Crunches"
+                android:text="@string/activity_workout_crunches"
                 style="@style/Widget.MaterialComponents.Chip.Choice"/>
         </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
@@ -121,7 +121,7 @@
         android:id="@+id/tvStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Position yourself in frame"
+        android:text="@string/activity_workout_positionyourselfinfr"
         android:textSize="13sp"
         android:textColor="@color/white"
         android:background="@drawable/bg_feedback_pill"
@@ -162,7 +162,7 @@
                     android:id="@+id/tvSessionReps"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text="@string/activity_battle_0"
                     android:textSize="48sp"
                     android:textStyle="bold"
                     android:textColor="@color/accent_orange"
@@ -171,7 +171,7 @@
                     android:id="@+id/tvExerciseLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Reps"
+                    android:text="@string/activity_workout_reps"
                     android:textSize="12sp"
                     android:textColor="@color/text_secondary"/>
             </LinearLayout>
@@ -192,7 +192,7 @@
                     android:id="@+id/tvSessionCredits"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text="@string/activity_battle_0"
                     android:textSize="48sp"
                     android:textStyle="bold"
                     android:textColor="@color/accent_blue"
@@ -200,7 +200,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Session Credits"
+                    android:text="@string/activity_workout_sessioncredits"
                     android:textSize="12sp"
                     android:textColor="@color/text_secondary"/>
             </LinearLayout>
@@ -221,7 +221,7 @@
                     android:id="@+id/tvTotalCredits"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text="@string/activity_battle_0"
                     android:textSize="28sp"
                     android:textStyle="bold"
                     android:textColor="@color/white"
@@ -229,7 +229,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="🎬 Total"
+                    android:text="@string/activity_workout_total"
                     android:textSize="12sp"
                     android:textColor="@color/text_secondary"/>
             </LinearLayout>
@@ -241,7 +241,7 @@
         android:id="@+id/tvCreditToast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+1 Credit! 🎬"
+        android:text="@string/activity_workout_1credit"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/accent_orange"

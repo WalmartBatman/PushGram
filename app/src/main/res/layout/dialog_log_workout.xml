@@ -6,7 +6,7 @@
     android:padding="20dp">
 
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:text="How many sets and reps did you do?"
+        android:text="@string/dialog_log_workout_howmanysetsandrepsdi"
         android:textSize="14sp" android:textColor="#AAAAAA" android:layout_marginBottom="16dp"/>
 
     <!-- Sets row -->
@@ -14,12 +14,12 @@
         android:orientation="horizontal" android:gravity="center_vertical"
         android:layout_marginBottom="12dp">
         <TextView android:layout_width="80dp" android:layout_height="wrap_content"
-            android:text="Sets:" android:textSize="15sp" android:textColor="#FFFFFF"
+            android:text="@string/dialog_log_workout_sets" android:textSize="15sp" android:textColor="#FFFFFF"
             android:textStyle="bold"/>
         <android.widget.EditText android:id="@+id/etSets"
             android:layout_width="80dp" android:layout_height="wrap_content"
             android:inputType="number" android:textSize="18sp" android:textStyle="bold"
-            android:textColor="#FF6B35" android:gravity="center" android:text="3"/>
+            android:textColor="#FF6B35" android:gravity="center" android:text="@string/activity_battle_3"/>
     </LinearLayout>
 
     <!-- Reps row -->
@@ -27,18 +27,18 @@
         android:orientation="horizontal" android:gravity="center_vertical"
         android:layout_marginBottom="16dp">
         <TextView android:layout_width="80dp" android:layout_height="wrap_content"
-            android:text="Reps:" android:textSize="15sp" android:textColor="#FFFFFF"
+            android:text="@string/dialog_log_workout_reps" android:textSize="15sp" android:textColor="#FFFFFF"
             android:textStyle="bold"/>
         <android.widget.EditText android:id="@+id/etReps"
             android:layout_width="80dp" android:layout_height="wrap_content"
             android:inputType="number" android:textSize="18sp" android:textStyle="bold"
-            android:textColor="#FF6B35" android:gravity="center" android:text="10"/>
+            android:textColor="#FF6B35" android:gravity="center" android:text="@string/dialog_log_workout_10"/>
     </LinearLayout>
 
     <!-- XP preview -->
     <TextView android:id="@+id/tvXpPreview"
         android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:text="+120 XP" android:textSize="22sp" android:textStyle="bold"
+        android:text="@string/dialog_log_workout_120xp" android:textSize="22sp" android:textStyle="bold"
         android:textColor="#4CAF50" android:gravity="center"
         android:background="@color/card_bg" android:padding="12dp"/>
 
