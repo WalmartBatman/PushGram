@@ -49,7 +49,7 @@ jobs:
       - name: Build Release APK
         run: |
           chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon --stacktrace
+          ./gradlew assembleRelease --no-daemon --stacktrace --info 2>&1 | grep -E "error:|Error:|FAILED|Exception|Caused by:|> Task" | head -60
 
       - name: List APK outputs
         if: always()
