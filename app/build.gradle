@@ -18,7 +18,7 @@ android {
 
     signingConfigs {
         release {
-            storeFile project.file("pushgram-release.jks")
+            storeFile file("pushgram-release.jks")
             storePassword "pushgram123"
             keyAlias "pushgram"
             keyPassword "pushgram123"

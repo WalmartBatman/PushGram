@@ -86,7 +86,7 @@ public class CameraProcessor {
 
         ImageAnalysis imageAnalysis = new ImageAnalysis.Builder()
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST).build();
-        imageAnalysis.setAnalyzer(cameraExecutor, ip -> processFrame(ip, analyzer));
+        imageAnalysis.setAnalyzer(cameraExecutor, ip -> processFrame(ip));
 
         CameraSelector selector = new CameraSelector.Builder()
                 .requireLensFacing(lensFacing).build();
@@ -97,19 +97,19 @@ public class CameraProcessor {
     }
 
     @SuppressLint("UnsafeOptInUsageError")
-    private void processFrame(androidx.camera.core.ImageProxy ip, PushUpAnalyzer analyzer) {
+    private void processFrame(androidx.camera.core.ImageProxy ip) {
         if (ip.getImage() == null) { ip.close(); return; }
         InputImage img = InputImage.fromMediaImage(ip.getImage(),
                 ip.getImageInfo().getRotationDegrees());
         poseDetector.process(img)
-                .addOnSuccessListener(analyzer::analyze)
+                .addOnSuccessListener(pose -> analyzer.analyze(pose))
                 .addOnFailureListener(e -> Log.w(TAG, "Pose fail", e))
                 .addOnCompleteListener(t -> ip.close());
     }
 
     public void resetAnalyzer() {
         // Called when user switches exercise — resets phase state so first rep detects correctly
-        // PushUpAnalyzer is recreated on next frame via processFrame; state is in the analyzer
+        // ExerciseAnalyzer state is preserved across frames; reset happens on exercise switch
         // Rebind camera to get fresh ImageAnalysis pipeline
         if (cameraProvider != null) bindCamera();
     }
