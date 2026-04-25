@@ -30,6 +30,14 @@ public class CreditManager {
                 .apply();
     }
 
+    public void addCredits(int amount) {
+        if (amount <= 0) return;
+        prefs.edit()
+                .putInt(KEY_CREDITS, getCredits() + amount)
+                .putInt(KEY_TOTAL_PUSHUPS, getTotalPushups() + amount)
+                .apply();
+    }
+
     public boolean spendCredit() {
         int current = getCredits();
         if (current > 0) { prefs.edit().putInt(KEY_CREDITS, current - 1).apply(); return true; }

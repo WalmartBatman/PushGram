@@ -11,14 +11,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.pushgram.app.camera.CameraProcessor;
-import com.pushgram.app.camera.PushUpAnalyzer;
+import com.pushgram.app.camera.ExerciseAnalyzer;
 import com.pushgram.app.databinding.ActivityBattleBinding;
 import com.pushgram.app.firebase.FirebaseManager;
 import com.pushgram.app.progression.data.ProgressionStore;
 import com.pushgram.app.progression.model.UserProfile;
 import com.pushgram.app.rank.RankManager;
 
-public class BattleActivity extends AppCompatActivity implements PushUpAnalyzer.PushUpListener {
+public class BattleActivity extends AppCompatActivity implements ExerciseAnalyzer.RepListener {
 
     private static final int BATTLE_XP_WIN  = 500;
     private static final int BATTLE_XP_LOSE = 100;
@@ -74,7 +74,8 @@ public class BattleActivity extends AppCompatActivity implements PushUpAnalyzer.
     // ── Camera ────────────────────────────────────────────────────────
 
     private void startCamera() {
-        cameraProcessor = new CameraProcessor(this, this, binding.cameraPreview, this);
+        ExerciseAnalyzer analyzer = new ExerciseAnalyzer(ExerciseAnalyzer.ExerciseType.PUSHUP, this);
+        cameraProcessor = new CameraProcessor(this, this, binding.cameraPreview, analyzer);
         cameraProcessor.start();
     }
 
@@ -195,10 +196,10 @@ public class BattleActivity extends AppCompatActivity implements PushUpAnalyzer.
                 .show();
     }
 
-    // ── PushUpAnalyzer.PushUpListener ──────────────────────────────────
+    // ── ExerciseAnalyzer.RepListener ──────────────────────────────────
 
     @Override
-    public void onRepCompleted(boolean isPerfectForm) {
+    public void onRepCompleted(boolean goodForm) {
         if (!battleActive) return;
         myReps++;
         mainHandler.post(() -> {
@@ -214,14 +215,14 @@ public class BattleActivity extends AppCompatActivity implements PushUpAnalyzer.
     }
 
     @Override
-    public void onPhaseChanged(PushUpAnalyzer.Phase phase, double elbowAngle) {
+    public void onPhaseChanged(String phase, double angle) {
         mainHandler.post(() -> binding.tvPhase.setText(
-                phase == PushUpAnalyzer.Phase.DOWN ? "⬇ " + (int)elbowAngle + "°" :
-                phase == PushUpAnalyzer.Phase.UP   ? "⬆ " + (int)elbowAngle + "°" : "→"));
+                "DOWN".equals(phase) ? "⬇ " + (int)angle + "°" :
+                "UP".equals(phase)   ? "⬆ " + (int)angle + "°" : "→"));
     }
 
     @Override
-    public void onFormFeedback(String feedback) {
+    public void onFeedback(String feedback) {
         if (battleActive) mainHandler.post(() -> binding.tvFormFeedback.setText(feedback));
     }
 
