@@ -1,313 +1,314 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
-    android:fillViewport="true">
+    android:background="@color/bg_dark">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="20dp"
-        android:paddingTop="52dp"
-        android:paddingBottom="40dp">
+    <!-- Scrollable body — constrained between top=0 and bottom=ig_banner -->
+    <ScrollView
+        android:id="@+id/scrollBody"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnEnableAccessibility"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Header Row (Change #3: profile avatar + Change #4: removed IG status from here) -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="28dp">
-
-            <!-- Tappable profile avatar (Change #3) -->
-            <FrameLayout
-                android:id="@+id/ivProfileAvatar"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@drawable/bg_icon_circle"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackgroundBorderless">
-
-                <ImageView
-                    android:id="@+id/imgProfilePic"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"/>
-
-                <TextView
-                    android:id="@+id/tvAvatarInitials"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="⚡"
-                    android:textSize="22sp"
-                    android:gravity="center"/>
-            </FrameLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="12dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="PUSHGRAM"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.12"
-                    android:textColor="@color/text_primary"
-                    android:fontFamily="sans-serif-black"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Earn your reels."
-                    android:textSize="13sp"
-                    android:textColor="@color/text_secondary"/>
-            </LinearLayout>
-
-            <!-- Compact status dot (no full banner here anymore) -->
-            <TextView
-                android:id="@+id/tvAccessibilityStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="⚠️"
-                android:textSize="12sp"
-                android:textColor="@color/text_secondary"/>
-        </LinearLayout>
-
-        <!-- Rank Card -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/bg_rank_card"
-            android:padding="18dp"
-            android:layout_marginBottom="16dp">
+            android:paddingHorizontal="20dp"
+            android:paddingTop="52dp"
+            android:paddingBottom="12dp">
 
+            <!-- Header Row -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="10dp">
-                <TextView
-                    android:id="@+id/tvRankBadge"
+                android:layout_marginBottom="22dp">
+
+                <!-- Tappable profile avatar (Change #3) -->
+                <FrameLayout
+                    android:id="@+id/ivProfileAvatar"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_icon_circle"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless">
+                    <ImageView
+                        android:id="@+id/imgProfilePic"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"/>
+                    <TextView
+                        android:id="@+id/tvAvatarInitials"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="⚡"
+                        android:textSize="22sp"
+                        android:gravity="center"/>
+                </FrameLayout>
+
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="🥉 Rookie"
-                    android:textSize="17sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/accent_orange"
-                    android:fontFamily="sans-serif-black"/>
+                    android:orientation="vertical"
+                    android:layout_marginStart="12dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PUSHGRAM"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.12"
+                        android:textColor="@color/text_primary"
+                        android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Earn your reels."
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary"/>
+                </LinearLayout>
+
                 <TextView
-                    android:id="@+id/tvXpAmount"
+                    android:id="@+id/tvAccessibilityStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0 XP"
-                    android:textSize="13sp"
-                    android:textColor="@color/text_secondary"/>
-            </LinearLayout>
-
-            <ProgressBar
-                android:id="@+id/rankProgressBar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:progressDrawable="@drawable/progress_bar_orange"
-                android:progress="0"/>
-        </LinearLayout>
-
-        <!-- Stats Row -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="24dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/bg_stat_card_orange"
-                android:layout_marginEnd="8dp">
-                <TextView
-                    android:id="@+id/tvCredits"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="48sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/accent_orange"
-                    android:fontFamily="sans-serif-black"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="🎬  Reel Credits"
+                    android:text="⚠️"
                     android:textSize="12sp"
                     android:textColor="@color/text_secondary"/>
             </LinearLayout>
 
+            <!-- Rank Card -->
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/bg_stat_card_blue"
-                android:layout_marginStart="8dp">
-                <TextView
-                    android:id="@+id/tvTotalPushups"
-                    android:layout_width="wrap_content"
+                android:background="@drawable/bg_rank_card"
+                android:padding="16dp"
+                android:layout_marginBottom="12dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="48sp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+                    <TextView
+                        android:id="@+id/tvRankBadge"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="🥉 Rookie"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/accent_orange"
+                        android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:id="@+id/tvXpAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 XP"
+                        android:textSize="13sp"
+                        android:textColor="@color/text_secondary"/>
+                </LinearLayout>
+                <ProgressBar
+                    android:id="@+id/rankProgressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:progressDrawable="@drawable/progress_bar_orange"
+                    android:progress="0"/>
+            </LinearLayout>
+
+            <!-- Stats Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="104dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_stat_card_orange"
+                    android:layout_marginEnd="8dp">
+                    <TextView
+                        android:id="@+id/tvCredits"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="42sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/accent_orange"
+                        android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🎬  Credits"
+                        android:textSize="11sp"
+                        android:textColor="@color/text_secondary"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_stat_card_blue"
+                    android:layout_marginStart="8dp">
+                    <TextView
+                        android:id="@+id/tvTotalPushups"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="42sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/accent_blue"
+                        android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="💪  Push-ups"
+                        android:textSize="11sp"
+                        android:textColor="@color/text_secondary"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- PRIMARY CTA -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="8dp"
+                app:cardBackgroundColor="@color/accent_orange"
+                android:layout_marginBottom="10dp">
+                <Button
+                    android:id="@+id/btnStartWorkout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="💪   START WORKOUT"
+                    android:textSize="16sp"
                     android:textStyle="bold"
+                    android:backgroundTint="@android:color/transparent"
+                    android:textColor="@color/bg_dark"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Secondary buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+                <Button
+                    android:id="@+id/btnExercises"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:text="🏋️  Exercises"
+                    android:textSize="12sp"
+                    android:backgroundTint="@color/card_bg"
+                    android:textColor="@color/white"
+                    app:cornerRadius="14dp"
+                    android:layout_marginEnd="6dp"/>
+                <Button
+                    android:id="@+id/btnLeaderboard"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:text="🏆  Rankings"
+                    android:textSize="12sp"
+                    android:backgroundTint="@color/card_bg"
+                    android:textColor="@color/white"
+                    app:cornerRadius="14dp"
+                    android:layout_marginStart="6dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btnBattle"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:text="⚔️  Battle"
+                    android:textSize="12sp"
+                    android:backgroundTint="@color/card_bg"
+                    android:textColor="@color/accent_orange"
+                    app:cornerRadius="14dp"
+                    android:layout_marginEnd="6dp"/>
+                <Button
+                    android:id="@+id/btnMusic"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:text="🎵  Music"
+                    android:textSize="12sp"
+                    android:backgroundTint="@color/card_bg"
                     android:textColor="@color/accent_blue"
-                    android:fontFamily="sans-serif-black"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="💪  Push-ups"
-                    android:textSize="12sp"
-                    android:textColor="@color/text_secondary"/>
+                    app:cornerRadius="14dp"
+                    android:layout_marginStart="6dp"/>
             </LinearLayout>
+
         </LinearLayout>
+    </ScrollView>
 
-        <!-- PRIMARY CTA -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
-            app:cardBackgroundColor="@color/accent_orange"
-            android:layout_marginBottom="12dp"
-            android:foreground="?android:attr/selectableItemBackground">
-            <Button
-                android:id="@+id/btnStartWorkout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="💪   START WORKOUT"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.05"
-                android:backgroundTint="@android:color/transparent"
-                android:textColor="@color/bg_dark"/>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Secondary grid -->
-        <LinearLayout
-            android:layout_width="match_parent"
+    <!-- Change #4: Instagram banner pinned to bottom of screen, always visible -->
+    <LinearLayout
+        android:id="@+id/btnEnableAccessibility"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_warning_banner"
+        android:padding="14dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
-            <Button
-                android:id="@+id/btnExercises"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:text="🏋️  Exercises"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:backgroundTint="@color/card_bg"
-                android:textColor="@color/white"
-                app:cornerRadius="16dp"
-                android:layout_marginEnd="6dp"/>
-            <Button
-                android:id="@+id/btnLeaderboard"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:text="🏆  Rankings"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:backgroundTint="@color/card_bg"
-                android:textColor="@color/white"
-                app:cornerRadius="16dp"
-                android:layout_marginStart="6dp"/>
-        </LinearLayout>
-
+            android:text="⚠️"
+            android:textSize="18sp"
+            android:layout_marginEnd="10dp"/>
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="24dp">
-            <Button
-                android:id="@+id/btnBattle"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:text="⚔️  Battle"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:backgroundTint="@color/card_bg"
-                android:textColor="@color/accent_orange"
-                app:cornerRadius="16dp"
-                android:layout_marginEnd="6dp"/>
-            <Button
-                android:id="@+id/btnMusic"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:text="🎵  Music"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:backgroundTint="@color/card_bg"
-                android:textColor="@color/accent_blue"
-                app:cornerRadius="16dp"
-                android:layout_marginStart="6dp"/>
-        </LinearLayout>
-
-        <!-- Change #4: Instagram monitoring banner MOVED TO BOTTOM -->
-        <LinearLayout
-            android:id="@+id/btnEnableAccessibility"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_warning_banner"
-            android:padding="16dp"
-            android:visibility="gone">
+            android:layout_weight="1"
+            android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="⚠️"
-                android:textSize="20sp"
-                android:layout_marginEnd="12dp"/>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Enable Instagram Monitor"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tap to set up the paywall"
-                    android:textSize="12sp"
-                    android:textColor="@color/text_secondary"/>
-            </LinearLayout>
+                android:text="Enable Instagram Monitor"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="›"
-                android:textSize="24sp"
-                android:textColor="@color/accent_orange"/>
+                android:text="Tap to activate the paywall"
+                android:textSize="11sp"
+                android:textColor="@color/text_secondary"/>
         </LinearLayout>
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="›"
+            android:textSize="22sp"
+            android:textColor="@color/accent_orange"/>
     </LinearLayout>
-</ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

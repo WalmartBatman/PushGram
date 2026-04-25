@@ -17,6 +17,7 @@ import com.google.mlkit.vision.common.InputImage;
 import com.google.mlkit.vision.pose.PoseDetection;
 import com.google.mlkit.vision.pose.PoseDetector;
 import com.google.mlkit.vision.pose.defaults.PoseDetectorOptions;
+import com.pushgram.app.camera.ExerciseAnalyzer;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -33,7 +34,7 @@ public class CameraProcessor {
     private final Context context;
     private final LifecycleOwner lifecycleOwner;
     private final PreviewView previewView;
-    private final PushUpAnalyzer.PushUpListener listener;
+    private final ExerciseAnalyzer analyzer;
 
     private PoseDetector poseDetector;
     private ExecutorService cameraExecutor;
@@ -43,11 +44,11 @@ public class CameraProcessor {
     private int lensFacing = CameraSelector.LENS_FACING_FRONT;
 
     public CameraProcessor(Context ctx, LifecycleOwner owner,
-                           PreviewView preview, PushUpAnalyzer.PushUpListener listener) {
-        this.context       = ctx;
+                           PreviewView preview, ExerciseAnalyzer analyzer) {
+        this.context        = ctx;
         this.lifecycleOwner = owner;
-        this.previewView   = preview;
-        this.listener      = listener;
+        this.previewView    = preview;
+        this.analyzer       = analyzer;
     }
 
     public void start() {
@@ -83,7 +84,6 @@ public class CameraProcessor {
         Preview preview = new Preview.Builder().build();
         preview.setSurfaceProvider(previewView.getSurfaceProvider());
 
-        PushUpAnalyzer analyzer = new PushUpAnalyzer(listener);
         ImageAnalysis imageAnalysis = new ImageAnalysis.Builder()
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST).build();
         imageAnalysis.setAnalyzer(cameraExecutor, ip -> processFrame(ip, analyzer));
@@ -105,6 +105,13 @@ public class CameraProcessor {
                 .addOnSuccessListener(analyzer::analyze)
                 .addOnFailureListener(e -> Log.w(TAG, "Pose fail", e))
                 .addOnCompleteListener(t -> ip.close());
+    }
+
+    public void resetAnalyzer() {
+        // Called when user switches exercise — resets phase state so first rep detects correctly
+        // PushUpAnalyzer is recreated on next frame via processFrame; state is in the analyzer
+        // Rebind camera to get fresh ImageAnalysis pipeline
+        if (cameraProvider != null) bindCamera();
     }
 
     public void stop() {

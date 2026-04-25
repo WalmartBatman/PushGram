@@ -1,212 +1,256 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_dark">
 
-    <!-- Camera feed -->
+    <!-- Camera fills entire background -->
     <androidx.camera.view.PreviewView
         android:id="@+id/cameraPreview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:scaleType="fillCenter"/>
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Gradient overlays top + bottom -->
-    <View android:layout_width="match_parent" android:layout_height="160dp"
-        android:layout_gravity="top"
-        android:background="@drawable/gradient_top_overlay"/>
-    <View android:layout_width="match_parent" android:layout_height="320dp"
-        android:layout_gravity="bottom"
-        android:background="@drawable/gradient_bottom_overlay"/>
-
-    <!-- Top bar -->
+    <!-- Top bar: Back + Phase indicator + Flip -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/topBar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
         android:orientation="horizontal"
-        android:padding="16dp"
-        android:paddingTop="48dp"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:padding="12dp"
+        android:background="#66000000"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <Button
             android:id="@+id/btnBack"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:text="✕"
-            android:textSize="16sp"
-            android:backgroundTint="#33FFFFFF"
+            android:text="←"
+            android:textSize="18sp"
+            android:backgroundTint="#44FFFFFF"
             android:textColor="@color/white"
             android:padding="0dp"
             app:cornerRadius="20dp"/>
 
-        <TextView
+        <Spinner
+            android:id="@+id/spinnerExercise"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight="1"
-            android:text="Push-up Mode"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:fontFamily="sans-serif-black"/>
+            android:layout_marginHorizontal="10dp"
+            android:backgroundTint="#44FFFFFF"
+            android:paddingStart="10dp"
+            android:popupBackground="@color/card_bg"/>
 
         <TextView
             android:id="@+id/tvPhase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="—"
-            android:textSize="13sp"
+            android:textSize="12sp"
             android:textColor="@color/white"
             android:background="@drawable/chip_bg"
-            android:paddingHorizontal="14dp"
-            android:paddingVertical="6dp"/>
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:layout_marginStart="6dp"/>
+
         <Button
             android:id="@+id/btnFlipCamera"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:text="🔄"
             android:textSize="16sp"
-            android:backgroundTint="#33FFFFFF"
+            android:backgroundTint="#44FFFFFF"
             android:textColor="@color/white"
             android:padding="0dp"
-            android:layout_marginStart="8dp"
             app:cornerRadius="20dp"/>
     </LinearLayout>
 
-    <!-- Bottom HUD -->
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- Fix #3: Exercise selector ChipGroup — anchored just below top bar -->
+    <HorizontalScrollView
+        android:id="@+id/exerciseScrollView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:orientation="vertical"
-        android:paddingHorizontal="20dp"
-        android:paddingBottom="40dp"
-        android:paddingTop="16dp"
-        android:gravity="center">
+        android:scrollbars="none"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Form feedback pill -->
-        <TextView
-            android:id="@+id/tvStatus"
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupExercise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Position yourself for push-ups"
-            android:textSize="14sp"
-            android:textColor="#EEFFFFFF"
-            android:textAlignment="center"
-            android:background="@drawable/bg_feedback_pill"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="8dp"
-            android:layout_marginBottom="24dp"/>
+            app:singleSelection="true"
+            app:selectionRequired="true">
 
-        <!-- Rep counters -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipPushups"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💪 Push-Ups"
+                android:checked="true"
+                style="@style/Widget.MaterialComponents.Chip.Choice"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipSquats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🏋 Squats"
+                style="@style/Widget.MaterialComponents.Chip.Choice"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCrunches"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🔥 Crunches"
+                style="@style/Widget.MaterialComponents.Chip.Choice"/>
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <!-- Fix #2: Status pill — above bottom card -->
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Position yourself in frame"
+        android:textSize="13sp"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_feedback_pill"
+        android:padding="10dp"
+        android:gravity="center"
+        android:maxWidth="280dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="12dp"/>
+
+    <!-- Fix #2: Bottom stats card — pinned to bottom, no scroll needed -->
+    <LinearLayout
+        android:id="@+id/bottomCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_rank_card"
+        android:padding="16dp"
+        android:layout_margin="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Counters row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="16dp">
+            android:orientation="horizontal">
 
-            <!-- Rep count -->
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="110dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/bg_counter_dark"
-                android:layout_marginEnd="8dp">
+                android:gravity="center">
                 <TextView
                     android:id="@+id/tvSessionReps"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textSize="52sp"
+                    android:textSize="48sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/accent_orange"
+                    android:fontFamily="sans-serif-black"/>
+                <TextView
+                    android:id="@+id/tvExerciseLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reps"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/card_bg"
+                android:layout_marginVertical="8dp"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/tvSessionCredits"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="48sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/accent_blue"
+                    android:fontFamily="sans-serif-black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Session Credits"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/card_bg"
+                android:layout_marginVertical="8dp"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/tvTotalCredits"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="28sp"
                     android:textStyle="bold"
                     android:textColor="@color/white"
                     android:fontFamily="sans-serif-black"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Push-ups"
-                    android:textSize="11sp"
-                    android:textColor="#88FFFFFF"/>
+                    android:text="🎬 Total"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary"/>
             </LinearLayout>
-
-            <!-- Credits earned -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="110dp"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/bg_counter_orange"
-                android:layout_marginStart="8dp">
-                <TextView
-                    android:id="@+id/tvSessionCredits"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="52sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/accent_orange"
-                    android:fontFamily="sans-serif-black"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Credits"
-                    android:textSize="11sp"
-                    android:textColor="#88FFFFFF"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- Total credits row -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_counter_dark"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="10dp">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Total reel credits"
-                android:textSize="13sp"
-                android:textColor="@color/text_secondary"/>
-            <TextView
-                android:id="@+id/tvTotalCredits"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/accent_orange"
-                android:fontFamily="sans-serif-black"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 🎬"
-                android:textSize="16sp"/>
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Credit earned toast -->
+    <!-- Credit toast overlay -->
     <TextView
         android:id="@+id/tvCreditToast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="+1 🎬 Reel Credit!"
-        android:textSize="24sp"
+        android:text="+1 Credit! 🎬"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
-        android:background="@drawable/toast_bg"
-        android:paddingHorizontal="28dp"
-        android:paddingVertical="14dp"
-        android:visibility="gone"/>
+        android:textColor="@color/accent_orange"
+        android:background="@drawable/bg_feedback_pill"
+        android:padding="12dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/bottomCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="60dp"/>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
