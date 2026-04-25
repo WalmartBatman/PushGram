@@ -74,7 +74,7 @@
     <string name="activity_main" translatable="false">⚡</string>
     <string name="activity_main_pushgram" translatable="false">PUSHGRAM</string>
     <string name="activity_main_earnyourreels" translatable="false">Earn your reels.</string>
-    <string name="activity_main" translatable="false">⚠️</string>
+    <string name="activity_main_warning" translatable="false">⚠️</string>
     <string name="activity_main_credits" translatable="false">🎬  Credits</string>
     <string name="activity_main_pushups" translatable="false">💪  Push-ups</string>
     <string name="activity_main_startworkout" translatable="false">💪   START WORKOUT</string>

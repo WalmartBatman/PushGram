@@ -83,7 +83,7 @@
                     android:id="@+id/tvAccessibilityStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/activity_main"
+                    android:text="@string/activity_main_warning"
                     android:textSize="12sp"
                     android:textColor="@color/text_secondary"/>
             </LinearLayout>
@@ -281,7 +281,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_main"
+            android:text="@string/activity_main_warning"
             android:textSize="18sp"
             android:layout_marginEnd="10dp"/>
         <LinearLayout
