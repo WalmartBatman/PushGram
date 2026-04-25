@@ -61,4 +61,3 @@ jobs:
           name: PushGram-release
           path: app/build/outputs/apk/release/*.apk
           if-no-files-found: error
-          if-no-files-found: error
