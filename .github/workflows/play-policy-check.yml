@@ -1,0 +1,60 @@
+name: Play Store Policy Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  policy-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check forbidden permissions
+        run: |
+          FAIL=0
+          for perm in "SYSTEM_ALERT_WINDOW" "READ_CALL_LOG" "WRITE_CALL_LOG" \
+                      "PROCESS_OUTGOING_CALLS" "READ_SMS" "RECEIVE_SMS" \
+                      "SEND_SMS" "READ_CONTACTS" "GET_ACCOUNTS"; do
+            if grep -q "$perm" app/src/main/AndroidManifest.xml; then
+              echo "❌ FORBIDDEN permission declared: $perm"
+              FAIL=1
+            fi
+          done
+          [ $FAIL -eq 0 ] && echo "✅ No forbidden permissions" || exit 1
+
+      - name: Check accessibility service not targeting specific packages
+        run: |
+          if grep -q "packageNames" app/src/main/res/xml/accessibility_service_config.xml; then
+            echo "❌ accessibility_service_config.xml targets specific packageNames — Play policy violation"
+            exit 1
+          fi
+          echo "✅ Accessibility service config clean"
+
+      - name: Check no exported services/receivers without intent-filter guard
+        run: |
+          FAIL=0
+          if grep -E 'android:exported="true"' app/src/main/AndroidManifest.xml | grep -v "OnboardingActivity\|LAUNCHER"; then
+            echo "❌ Unexpected exported=true components found"
+            FAIL=1
+          fi
+          [ $FAIL -eq 0 ] && echo "✅ Export flags clean" || exit 1
+
+      - name: Check minify enabled for release
+        run: |
+          if grep -q "minifyEnabled false" app/build.gradle; then
+            echo "❌ minifyEnabled is false for release — enables reverse engineering"
+            exit 1
+          fi
+          echo "✅ minifyEnabled true"
+
+      - name: Check targetSdk is current
+        run: |
+          TARGET=$(grep "targetSdk" app/build.gradle | grep -oP '\d+')
+          if [ "$TARGET" -lt 34 ]; then
+            echo "❌ targetSdk $TARGET is below Play Store minimum (34)"
+            exit 1
+          fi
+          echo "✅ targetSdk $TARGET"
