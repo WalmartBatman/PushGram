@@ -25,6 +25,30 @@ jobs:
           done
           [ $FAIL -eq 0 ] && echo "✅ No forbidden permissions" || exit 1
 
+      - name: Check no hardcoded API keys in source
+        run: |
+          if grep -rn "AIzaSy" app/src/main/java/ 2>/dev/null | grep -v "//"; then
+            echo "❌ Hardcoded Google/YouTube API key found in source"
+            exit 1
+          fi
+          echo "✅ No hardcoded API keys"
+
+      - name: Check allowBackup is false
+        run: |
+          if grep -q 'allowBackup="true"' app/src/main/AndroidManifest.xml; then
+            echo "❌ allowBackup=true exposes user data — set to false"
+            exit 1
+          fi
+          echo "✅ allowBackup=false"
+
+      - name: Check network security config present
+        run: |
+          if ! grep -q "networkSecurityConfig" app/src/main/AndroidManifest.xml; then
+            echo "❌ networkSecurityConfig missing — cleartext HTTP may be permitted"
+            exit 1
+          fi
+          echo "✅ networkSecurityConfig declared"
+
       - name: Check accessibility service not targeting specific packages
         run: |
           if grep -q "packageNames" app/src/main/res/xml/accessibility_service_config.xml; then

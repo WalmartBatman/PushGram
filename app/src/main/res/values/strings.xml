@@ -3,6 +3,7 @@
     <string name="app_name">PushGram</string>
     <string name="accessibility_service_label">PushGram Instagram Monitor</string>
     <string name="accessibility_description">PushGram monitors Instagram to limit reel usage based on your push-up credits.</string>
+    <string name="accessibility_summary">Detects when you open Instagram Reels and enforces your workout-based credit limit.</string>
     <!-- YouTube Data API v3: console.cloud.google.com → Enable YouTube Data API v3 → Create Credentials -->
     <string name="youtube_api_key">YOUR_YOUTUBE_DATA_API_V3_KEY</string>
     <!-- Spotify Web API: developer.spotify.com/dashboard → Create App -->

@@ -69,7 +69,7 @@ public class YouTubeApiClient {
     }
 
     public String resolveAudioStreamUrl(String videoId) throws IOException {
-        String url = "https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8";
+        String url = "https://www.youtube.com/youtubei/v1/player?key=" + apiKey;
         String body = "{\"context\":{\"client\":{\"clientName\":\"ANDROID_MUSIC\",\"clientVersion\":\"5.16.51\",\"androidSdkVersion\":30}},\"videoId\":\"" + videoId + "\"}";
         okhttp3.RequestBody rb = okhttp3.RequestBody.create(body, okhttp3.MediaType.parse("application/json"));
         Request req = new Request.Builder().url(url).post(rb)
