@@ -35,7 +35,6 @@ jobs:
       - name: Write local.properties
         run: echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
 
-
       - name: Verify keystore
         run: |
           if [ -f "app/pushgram-release.jks" ]; then
@@ -45,6 +44,17 @@ jobs:
             exit 1
           fi
 
+      - name: Auto-bump versionCode
+        run: |
+          VERSION_CODE=${{ github.run_number }}
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+          VERSION_NAME="1.${VERSION_CODE}.0"
+          sed -i "s/versionCode [0-9]*/versionCode ${VERSION_CODE}/" app/build.gradle
+          sed -i "s/versionName \"[^\"]*\"/versionName \"${VERSION_NAME}\"/" app/build.gradle
+          echo "VERSION_CODE=${VERSION_CODE}" >> $GITHUB_ENV
+          echo "VERSION_NAME=${VERSION_NAME}" >> $GITHUB_ENV
+          echo "SHORT_SHA=${SHORT_SHA}" >> $GITHUB_ENV
+          echo "Built: v${VERSION_NAME} (${VERSION_CODE}) @ ${SHORT_SHA}"
 
       - name: Build Release APK
         run: |
@@ -53,13 +63,41 @@ jobs:
           grep -E "error:|Error:|FAILED|Exception|Caused by:|> Task" /tmp/gradle.log | head -80
           exit $(grep -oP '(?<=EXIT:)\d+' /tmp/gradle.log | tail -1)
 
+      - name: Rename APK with version
+        run: |
+          mv app/build/outputs/apk/release/app-release.apk \
+             app/build/outputs/apk/release/PushGram-v${{ env.VERSION_NAME }}.apk
+
       - name: List APK outputs
         if: always()
         run: find app/build/outputs/apk -name "*.apk" 2>/dev/null || echo "No APKs found"
 
-      - name: Upload APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: PushGram-release
-          path: app/build/outputs/apk/release/*.apk
+          path: app/build/outputs/apk/release/PushGram-v${{ env.VERSION_NAME }}.apk
           if-no-files-found: error
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.VERSION_NAME }}
+          name: "PushGram v${{ env.VERSION_NAME }} (${{ env.SHORT_SHA }})"
+          body: |
+            ## PushGram v${{ env.VERSION_NAME }}
+
+            **Build:** #${{ env.VERSION_CODE }} | **Commit:** ${{ env.SHORT_SHA }}
+
+            ### Install
+            1. Download `PushGram-v${{ env.VERSION_NAME }}.apk` below
+            2. On your Android device: Settings → Apps → Install unknown apps → allow your browser
+            3. Open the downloaded APK and tap Install
+
+            ### What changed
+            See [commit history](https://github.com/${{ github.repository }}/commits/main) for details.
+          files: app/build/outputs/apk/release/PushGram-v${{ env.VERSION_NAME }}.apk
+          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
