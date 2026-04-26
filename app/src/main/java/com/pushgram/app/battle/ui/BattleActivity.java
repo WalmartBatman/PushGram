@@ -241,6 +241,18 @@ public class BattleActivity extends AppCompatActivity implements ExerciseAnalyze
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        if (cameraProcessor != null) cameraProcessor.stop();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (cameraProcessor != null) cameraProcessor.start();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         if (countdownTimer != null) countdownTimer.cancel();  // FIX #4

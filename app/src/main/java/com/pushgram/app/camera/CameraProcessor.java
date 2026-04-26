@@ -52,7 +52,9 @@ public class CameraProcessor {
     }
 
     public void start() {
-        cameraExecutor = Executors.newSingleThreadExecutor();
+        if (cameraExecutor == null || cameraExecutor.isShutdown()) {
+            cameraExecutor = Executors.newSingleThreadExecutor();
+        }
         PoseDetectorOptions opts = new PoseDetectorOptions.Builder()
                 .setDetectorMode(PoseDetectorOptions.STREAM_MODE).build();
         poseDetector = PoseDetection.getClient(opts);
@@ -115,8 +117,8 @@ public class CameraProcessor {
     }
 
     public void stop() {
-        if (cameraProvider  != null) cameraProvider.unbindAll();
-        if (cameraExecutor  != null) cameraExecutor.shutdown();
-        if (poseDetector    != null) try { poseDetector.close(); } catch (Exception ignored) {}
+        if (cameraProvider != null) { cameraProvider.unbindAll(); cameraProvider = null; }
+        if (cameraExecutor != null) { cameraExecutor.shutdown(); cameraExecutor = null; }
+        if (poseDetector   != null) { try { poseDetector.close(); } catch (Exception ignored) {} poseDetector = null; }
     }
 }

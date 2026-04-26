@@ -135,6 +135,16 @@ public class WorkoutActivity extends AppCompatActivity
         else { Toast.makeText(this, "Camera permission required", Toast.LENGTH_LONG).show(); finish(); }
     }
 
+    @Override protected void onPause() {
+        super.onPause();
+        if (cameraProcessor != null) cameraProcessor.stop();
+    }
+
+    @Override protected void onResume() {
+        super.onResume();
+        if (cameraProcessor != null) cameraProcessor.start();
+    }
+
     @Override protected void onDestroy() {
         super.onDestroy();
         if (cameraProcessor != null) cameraProcessor.stop();
