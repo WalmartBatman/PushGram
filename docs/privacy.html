@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PushGram — Privacy Policy</title>
+<style>
+  :root {
+    --bg: #0a0a0e; --card: #14141e; --orange: #ff6414;
+    --orange2: #ff8c28; --white: #f0f0f5; --gray: #8888a0;
+    --border: #2a2a3a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--white); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.75; }
+  header { background: var(--card); border-bottom: 2px solid var(--orange); padding: 28px 0; text-align: center; }
+  header .bolt { font-size: 2.4rem; }
+  header h1 { font-size: 2rem; font-weight: 900; letter-spacing: 4px; color: var(--orange); margin: 6px 0 4px; }
+  header p { color: var(--gray); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; }
+  main { max-width: 780px; margin: 0 auto; padding: 48px 24px 80px; }
+  .meta { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 8px; padding: 16px 22px; margin-bottom: 40px; font-size: 0.85rem; color: var(--gray); }
+  .meta strong { color: var(--orange2); }
+  h2 { font-size: 1.05rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin: 42px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  p { color: #c0c0d0; margin-bottom: 14px; font-size: 0.97rem; }
+  ul { color: #c0c0d0; padding-left: 22px; margin-bottom: 14px; }
+  ul li { margin-bottom: 7px; font-size: 0.97rem; }
+  a { color: var(--orange2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .highlight { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+  footer { text-align: center; padding: 32px 24px; color: var(--gray); font-size: 0.8rem; border-top: 1px solid var(--border); }
+  footer span { color: var(--orange); }
+</style>
+</head>
+<body>
+<header>
+  <div class="bolt">⚡</div>
+  <h1>PUSHGRAM</h1>
+  <p>Privacy Policy</p>
+</header>
+<main>
+  <div class="meta">
+    <strong>Effective Date:</strong> April 27, 2026 &nbsp;|&nbsp;
+    <strong>Last Updated:</strong> April 27, 2026 &nbsp;|&nbsp;
+    <strong>App Version:</strong> 1.0+
+  </div>
+
+  <h2>1. Introduction</h2>
+  <p>PushGram ("we", "us", or "our") is a fitness-based screen-time management application. This Privacy Policy explains what information we collect, how we use it, and your rights as a user. By using PushGram, you agree to the practices described here.</p>
+
+  <h2>2. Information We Collect</h2>
+  <p>We collect only what is necessary to provide the app's core features:</p>
+  <ul>
+    <li><strong>Camera data:</strong> Used in real-time to count push-ups, squats, and crunches using on-device pose detection (ML Kit). No video or images are ever stored or transmitted.</li>
+    <li><strong>Account information:</strong> Username, email address, and encrypted password provided during registration.</li>
+    <li><strong>Workout data:</strong> Rep counts, exercise type, session duration, XP, and form quality — stored locally and optionally synced to Firebase.</li>
+    <li><strong>Usage data:</strong> App interaction events for crash reporting and performance improvement. No browsing history or third-party app usage is tracked.</li>
+    <li><strong>Accessibility service data:</strong> PushGram uses an Accessibility Service solely to detect when Instagram is opened, enabling credit-based screen-time enforcement. We do not read, record, or transmit any content from Instagram or any other app.</li>
+  </ul>
+
+  <h2>3. How We Use Your Information</h2>
+  <ul>
+    <li>To count exercise reps and award credits using on-device camera processing</li>
+    <li>To maintain your workout history, XP, rank, and leaderboard position</li>
+    <li>To enforce your personal screen-time credit limits</li>
+    <li>To sync your profile across devices via Firebase (if you create an account)</li>
+    <li>To improve app stability through anonymised crash reports</li>
+  </ul>
+
+  <h2>4. Camera &amp; Pose Detection</h2>
+  <div class="highlight">
+    <p>All camera processing happens <strong>entirely on your device</strong>. Pose estimation is performed by Google ML Kit locally. No images, video frames, or biometric data are ever uploaded, stored on servers, or shared with any third party.</p>
+  </div>
+
+  <h2>5. Accessibility Service</h2>
+  <div class="highlight">
+    <p>PushGram's Accessibility Service detects only window state changes to identify when the Instagram app is in the foreground. It does <strong>not</strong> read screen content, passwords, messages, or any personal data from Instagram or any other application.</p>
+  </div>
+
+  <h2>6. Data Storage &amp; Security</h2>
+  <ul>
+    <li>Workout data and credits are stored locally on your device using Android SharedPreferences</li>
+    <li>If you use online features, data is synced to Firebase (Google) with encryption in transit (TLS) and at rest</li>
+    <li>Passwords are hashed — we never store plaintext credentials</li>
+    <li>We do not sell, rent, or trade your personal data to any third party</li>
+  </ul>
+
+  <h2>7. Third-Party Services</h2>
+  <p>PushGram integrates with the following services, each governed by their own privacy policies:</p>
+  <ul>
+    <li><strong>Firebase (Google):</strong> Authentication, database, and crash reporting — <a href="https://firebase.google.com/support/privacy" target="_blank">firebase.google.com/support/privacy</a></li>
+    <li><strong>Google ML Kit:</strong> On-device pose detection — <a href="https://developers.google.com/ml-kit/terms" target="_blank">developers.google.com/ml-kit/terms</a></li>
+    <li><strong>YouTube Data API:</strong> Music import feature — <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
+    <li><strong>Spotify / Apple Music:</strong> Optional music integration — governed by your existing account with those services</li>
+  </ul>
+
+  <h2>8. Children's Privacy</h2>
+  <p>PushGram is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal data, please contact us immediately.</p>
+
+  <h2>9. Your Rights</h2>
+  <ul>
+    <li><strong>Access:</strong> Request a copy of the data we hold about you</li>
+    <li><strong>Deletion:</strong> Request deletion of your account and associated data</li>
+    <li><strong>Portability:</strong> Export your workout history at any time from the app</li>
+    <li><strong>Opt-out:</strong> Disable Firebase sync in Settings to keep all data local only</li>
+  </ul>
+
+  <h2>10. Changes to This Policy</h2>
+  <p>We may update this Privacy Policy as the app evolves. We will notify you of significant changes through an in-app notification. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+
+  <h2>11. Contact Us</h2>
+  <p>For any privacy-related questions, requests, or concerns:</p>
+  <div class="highlight">
+    <p>📧 <a href="mailto:privacy@pushgram.app">privacy@pushgram.app</a><br/>
+    🌐 <a href="https://walmartbatman.github.io/PushGram/privacy">walmartbatman.github.io/PushGram/privacy</a><br/>
+    📦 <a href="https://github.com/WalmartBatman/PushGram">github.com/WalmartBatman/PushGram</a></p>
+  </div>
+</main>
+<footer>
+  <p>⚡ <span>PUSHGRAM</span> — Earn Your Reels &nbsp;|&nbsp; © 2026 PushGram &nbsp;|&nbsp; All rights reserved</p>
+</footer>
+</body>
+</html>
